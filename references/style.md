@@ -61,6 +61,9 @@ No other color, no gradient, no shadow, no texture on ink or paper.
 - Loose: behind the ink, overflowing the contour or offset from it. It never traces the contour.
 - Translucent, soft irregular edge, light paper grain, pigment pooling at the rim.
 - It covers at most 20% of the canvas.
+- **Watercolor is always really painted, never computed.** It comes from the generator: either inside the generated drawing, or as a real painted patch from `library/_washes` placed behind the ink by `scripts/color.py`. A tint computed by code reads as a flat fill, even with noise and grain (rejected 2026-11-07: the piggy bank, guitar and books looked like three flat fills next to the painted door).
+- What makes it watercolor: visible brush strokes, uneven pigment, darker pooling at the rim, light streaks and gaps, paper grain, and a shape that overflows the object instead of filling it.
+- **Every accepted drawing has two versions**: ink only, and with watercolor. Color is always this watercolor.
 - **A watercolor element never sits on another watercolor area**: coral on coral disappears (rejected: a coral heart rising over a coral background).
 
 ## 9. Composition

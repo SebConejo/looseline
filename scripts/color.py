@@ -1,17 +1,18 @@
-"""Paint loose coral watercolor into chosen regions of an ink drawing.
+"""Place real coral watercolor patches behind chosen regions of an ink drawing.
 
 usage:
   python3 -I scripts/color.py DIR --list
       writes DIR/regions.png: every closed region of the drawing with a number
-  python3 -I scripts/color.py DIR --regions 3,7,12 [--seed 1] [--close 9]
+  python3 -I scripts/color.py DIR --regions 6,7+8 [--patch wide] [--seed 1] [--close 9]
       writes DIR/color-wash.png (the watercolor layer), DIR/version-color.jpg
       (paper + watercolor + ink) and DIR/version-ink.jpg (paper + ink only)
 
-DIR holds layer-ink.png (from layers.py). A region is a connected area of paper
+DIR holds layer-ink.png (from layers.py). Regions joined by + get one patch
+together. The watercolor is never painted by code: a real painted patch from
+library/_washes (scripts/washes.py) is chosen by shape, scaled a little larger
+than the region, tilted and offset, and placed behind the ink. A region is a connected area of paper
 enclosed by ink; gaps narrower than --close (in half-size pixels) are closed
-first, because hand-drawn contours are often open. The watercolor follows the region loosely: it is shifted a
-little, its edge is irregular, it pools darker at the rim and carries paper
-grain, as references/style.md section 8 asks.
+first, because hand-drawn contours are often open.
 """
 import json
 import sys
@@ -20,7 +21,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 PAPER = (244, 242, 236)
-CORAL = (244, 142, 124)
+CORAL = (240, 128, 110)
 
 
 def opt(name, default=None):
@@ -108,22 +109,49 @@ def main():
         base.save(f"{d}/regions.png")
         print(f"{d}/regions.png: {len(keep)} regions")
         return
-    chosen = [int(v) for v in opt("--regions", "").split(",") if v]
+    groups = [[int(v) for v in g.split("+")] for g in opt("--regions", "").split(",") if g]
+    chosen = [i for g in groups for i in g]
+    forced = opt("--patch")
     rng = np.random.default_rng(int(opt("--seed", "1")))
-    small_mask = np.isin(lab, chosen).astype(np.float32)
-    if grow > 1:
-        img = Image.fromarray((small_mask * 255).astype(np.uint8))
-        small_mask = np.asarray(img.filter(ImageFilter.MaxFilter(grow | 1))).astype(np.float32) / 255
-    mask = np.asarray(Image.fromarray((small_mask * 255).astype(np.uint8)).resize(ink_img.size, Image.BILINEAR)).astype(np.float32) / 255
-    h, w = mask.shape
-    dx, dy = (rng.random(2) - 0.5) * 0.03 * w
-    shifted = np.roll(np.roll(mask, int(dy), 0), int(dx), 1)
-    loose = blur(shifted, 9) + (noise((h, w), 40, rng) - 0.5) * 0.55
-    body = np.clip((loose - 0.42) * 6, 0, 1)
-    rim = np.clip(body - blur(body, 7), 0, 1) * 1.6
-    density = 0.42 + 0.18 * noise((h, w), 90, rng) + rim * 0.35
-    grain = 0.8 + 0.2 * noise((h, w), 2, rng)
-    alpha = np.clip(body * density * grain, 0, 0.85)
+    root = __file__.rsplit("/scripts/", 1)[0]
+    import glob
+    patches = []
+    for f in sorted(glob.glob(f"{root}/library/_washes/patch-*.png")):
+        meta = json.load(open(f[:-4] + ".json"))
+        patches.append((f, meta))
+    if not patches:
+        print("no watercolor patches in library/_washes: run scripts/washes.py on a generated swatch sheet first")
+        sys.exit(1)
+    W, H = ink_img.size
+    wash = np.zeros((H, W), np.float32)
+    for g in groups:
+        ys, xs = np.nonzero(np.isin(lab, g))
+        x0, x1, y0, y1 = xs.min() * 2, xs.max() * 2, ys.min() * 2, ys.max() * 2
+        bw, bh = x1 - x0, y1 - y0
+        aspect = bw / max(1, bh)
+        pool = [p for p in patches if p[1].get("kind") not in ("heart", "splash")]
+        if forced:
+            pool = [p for p in patches if p[1].get("kind") == forced or p[0].endswith(f"patch-{forced.zfill(2)}.png")]
+        pool.sort(key=lambda p: abs(np.log(p[1]["aspect"] / aspect)))
+        f, meta = pool[min(len(pool) - 1, int(rng.integers(0, 2)))]
+        over = 1.12 + rng.random() * 0.12
+        tw, th = int(bw * over), int(bh * over)
+        patch = Image.open(f).resize((max(8, tw), max(8, th)), Image.LANCZOS).rotate(float((rng.random() - 0.5) * 10), expand=True, resample=Image.BICUBIC)
+        pa = np.asarray(patch).astype(np.float32)[..., 3] / 255
+        cx = (x0 + x1) / 2 + (rng.random() - 0.5) * 0.12 * bw
+        cy = (y0 + y1) / 2 + (rng.random() - 0.5) * 0.12 * bh
+        px, py = int(cx - pa.shape[1] / 2), int(cy - pa.shape[0] / 2)
+        sx0, sy0 = max(0, -px), max(0, -py)
+        dx0, dy0 = max(0, px), max(0, py)
+        dx1, dy1 = min(W, px + pa.shape[1]), min(H, py + pa.shape[0])
+        if dx1 <= dx0 or dy1 <= dy0:
+            continue
+        piece = pa[sy0:sy0 + dy1 - dy0, sx0:sx0 + dx1 - dx0]
+        region = wash[dy0:dy1, dx0:dx1]
+        wash[dy0:dy1, dx0:dx1] = 1 - (1 - region) * (1 - piece)
+        print(f"regions {g}: {meta.get('kind')} patch, {tw}x{th}")
+    alpha = np.clip(wash, 0, 1)
+    h, w = alpha.shape
     out = np.zeros((h, w, 4), np.uint8)
     out[..., :3] = CORAL
     out[..., 3] = (alpha * 255).astype(np.uint8)
@@ -131,7 +159,7 @@ def main():
     wash.save(f"{d}/color-wash.png", optimize=True)
     ys, xs = np.nonzero(alpha > 0.2)
     with open(f"{d}/color-wash.json", "w") as f:
-        json.dump({"size": [w, h], "bbox": [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())], "regions": chosen}, f)
+        json.dump({"size": [w, h], "bbox": [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())], "regions": groups}, f)
     for name, layers in (("version-color.jpg", [wash, ink_img]), ("version-ink.jpg", [ink_img])):
         base = Image.new("RGB", ink_img.size, PAPER)
         for layer in layers:
