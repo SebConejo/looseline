@@ -23,9 +23,14 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
 3. **Generate.** `node scripts/generate.mjs --subject "..." --out work/drawing.jpg` for one drawing, `--kind poses --poses 4` for a pose sheet, `--wash` when the idea uses coral watercolor. The style block from `references/style.md` is added for you; the whole prompt must stay under 1000 characters (`--dry` prints it). Describe what to draw, never which reference to copy.
 4. **Judge the drawing before anything else, with a fresh judge.** Never judge your own drawing yourself: start a separate agent that has none of this conversation, give it `references/judge.md` and the image path, and ask for the JSON verdict only. Any `false` answer: generate again, feeding the judge's reasons into the new prompt. Never animate a drawing that fails. When several drawings are needed, judge them in parallel.
 5. **Make layers.** `python3 -I scripts/layers.py work/drawing.jpg work/name` writes `name-ink.png` and `name-wash.png`. `python3 -I scripts/poses.py work/sheet.jpg work/pose` writes `pose1.png` and the next ones, aligned on the feet. Check that the number of poses found matches the sheet.
+5b. **Make the two versions of an accepted drawing.** Every accepted drawing exists without color (ink only) and with color. Color is always the coral watercolor, never another color or a flat fill. If the generation already holds watercolor, that is the color version. Otherwise `python3 -I scripts/color.py DIR --list` numbers the closed regions in `DIR/regions.png`; pick the regions that carry the idea (the piggy bank, the guitar body, two books of a stack), then `python3 -I scripts/color.py DIR --regions 6,12` writes `version-ink.jpg`, `version-color.jpg` and the `color-wash.png` layer. Leave people uncolored unless they are the idea.
 6. **Write the scene.** `scene.json` next to the images (`references/motion.md`, section 3). Start from the closest example. Put origins where things really pivot: the feet for a character, the centre of a heart.
 7. **Build and check.** `node scripts/build.mjs work/scene.json --out work/name.html`, then `node scripts/check.mjs work/name.html --times 0,600,...`. The check must print `0 problems`. Read the contact sheet PNG it writes: does each frame read, does the story show, does anything overlap badly (a coral element on a coral area, a heart on a face)? Fix and repeat.
 8. **Deliver** the HTML page. To preview it, never open it in the person's default browser, which may be in use; ask, or use another browser.
+
+## Library
+
+`library/catalog.json` lists the subjects; `node scripts/library.mjs --only 1-10` generates and splits them into `library/NN-slug/`. Each accepted folder holds `source.jpg`, `layer-ink.png`, the watercolor layer, `version-ink.jpg`, `version-color.jpg` and `judge.json`. `--retry N --note "judge reasons"` regenerates a refused one. Reuse a library drawing before generating a new one.
 
 ## Examples
 
