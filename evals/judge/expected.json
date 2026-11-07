@@ -1,0 +1,15 @@
+{
+  "about": "Calibration set for references/judge.md. Each image carries the owner's verdict. Run a fresh judge on every image after any change to judge.md; all six must match. The calibration examples in judge.md describe these images, so also check the judge on new drawings before trusting it fully.",
+  "expected": {
+    "a.jpg": { "pass": true, "what": "open palm with a watercolor heart (generated)" },
+    "b.jpg": { "pass": false, "what": "round smiley stick figures (generated, rejected)" },
+    "c.jpg": { "pass": true, "what": "person hugging themself (generated)" },
+    "d.jpg": { "pass": false, "what": "geometric pictogram person drawn in code (rejected)" },
+    "e.jpg": { "pass": true, "what": "pose sheet of an adult editorial figure (generated)" },
+    "f.jpg": { "pass": false, "what": "icon-like hand drawn in code (rejected)" }
+  },
+  "runs": [
+    { "date": "2026-11-07", "judge": "first brief", "agree": 4, "disagreed": ["c.jpg too strict on line and arms", "e.jpg read the smile as an emoji head"] },
+    { "date": "2026-11-07", "judge": "calibrated brief", "agree": 6, "disagreed": [] }
+  ]
+}

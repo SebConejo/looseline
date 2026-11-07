@@ -76,7 +76,7 @@ Corporate flat characters, isometric, 3D, photorealism, anime or comic shading, 
 
 ## 11. Judge questions for a generated drawing
 
-Answer each by looking at the image. Any wrong answer means generate again.
+The fresh judge agent uses `references/judge.md`, which turns these questions into a strict yes/no grid with calibration examples. Summary:
 
 1. Can you name the idea in five words?
 2. Does it look drawn by hand with a felt marker, not like a vector icon?

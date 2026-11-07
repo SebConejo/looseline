@@ -21,7 +21,7 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
    - ink and watercolor that move apart come from one drawing split into two layers;
    - an added element (a heart, a blob) is a layer reused from another drawing or generated alone.
 3. **Generate.** `node scripts/generate.mjs --subject "..." --out work/drawing.jpg` for one drawing, `--kind poses --poses 4` for a pose sheet, `--wash` when the idea uses coral watercolor. The style block from `references/style.md` is added for you; the whole prompt must stay under 1000 characters (`--dry` prints it). Describe what to draw, never which reference to copy.
-4. **Judge the drawing before anything else.** Read the image and answer the questions in `references/style.md`, section 11. Hands with wrong fingers, a round smiley head, thin lines, a vector look, or a pose sheet whose character changes between poses: generate again. Never animate a drawing that fails.
+4. **Judge the drawing before anything else, with a fresh judge.** Never judge your own drawing yourself: start a separate agent that has none of this conversation, give it `references/judge.md` and the image path, and ask for the JSON verdict only. Any `false` answer: generate again, feeding the judge's reasons into the new prompt. Never animate a drawing that fails. When several drawings are needed, judge them in parallel.
 5. **Make layers.** `python3 -I scripts/layers.py work/drawing.jpg work/name` writes `name-ink.png` and `name-wash.png`. `python3 -I scripts/poses.py work/sheet.jpg work/pose` writes `pose1.png` and the next ones, aligned on the feet. Check that the number of poses found matches the sheet.
 6. **Write the scene.** `scene.json` next to the images (`references/motion.md`, section 3). Start from the closest example. Put origins where things really pivot: the feet for a character, the centre of a heart.
 7. **Build and check.** `node scripts/build.mjs work/scene.json --out work/name.html`, then `node scripts/check.mjs work/name.html --times 0,600,...`. The check must print `0 problems`. Read the contact sheet PNG it writes: does each frame read, does the story show, does anything overlap badly (a coral element on a coral area, a heart on a face)? Fix and repeat.
@@ -38,6 +38,7 @@ Each folder holds the source image, the layers, `scene.json` and the built page.
 ## References
 
 - `references/style.md`: the style, what was rejected, and the judge questions. Read it before generating.
+- `references/judge.md`: the brief given to the fresh judge agent, calibrated on the owner's own verdicts.
 - `references/motion.md`: what a good animation is, where moving parts come from, the scene file and the page modes.
 
 ## Limits
