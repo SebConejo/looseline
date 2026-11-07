@@ -1,0 +1,46 @@
+{
+  "title": "Hugging oneself",
+  "caption": "The person appears, the watercolor spreads behind them, and they breathe and sway gently.",
+  "size": [1024, 1024],
+  "fps": 10,
+  "loop": 6000,
+  "still": 3400,
+  "boil": {
+    "freq": 0.018,
+    "scale": 5
+  },
+  "layers": [
+    {
+      "id": "wash",
+      "kind": "wash",
+      "src": "person-wash.png",
+      "reveal": {
+        "type": "bloom",
+        "cx": 512,
+        "cy": 540,
+        "radius": 560,
+        "track": [[0, 0], [800, 0], [1900, 1], [4700, 1], [5300, 0], [6000, 0]]
+      },
+      "origin": [512, 540],
+      "track": {
+        "scale": [[0, 0.9], [800, 0.9], [1900, 1], [4700, 1], [5300, 0.9], [6000, 0.9]]
+      }
+    },
+    {
+      "id": "person",
+      "kind": "ink",
+      "src": "person-ink.png",
+      "boil": true,
+      "origin": [512, 886],
+      "reveal": {
+        "type": "wipe",
+        "dir": "down",
+        "track": [[0, 0], [1000, 1], [5000, 1], [5600, 0], [6000, 0]]
+      },
+      "track": {
+        "sy": [[0, 1], [1900, 1], [2400, 1.02], [3400, 0.985], [4400, 1.02], [5000, 1], [6000, 1]],
+        "rotate": [[0, 0], [1900, 0], [2900, -1.2], [3900, 1], [4900, 0], [6000, 0]]
+      }
+    }
+  ]
+}

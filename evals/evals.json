@@ -1,0 +1,20 @@
+{
+  "skill_name": "ink",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Make me an animated hand-drawn illustration for my landing page: a person who sends a message and gets a reply.",
+      "expected_output": "One standalone HTML page. The character is an adult editorial silhouette (no round smiley head) generated as one pose sheet and cut with poses.py. Real motion: the character changes pose (types or holds a phone, then reacts), a speech bubble or envelope pops in and another comes back. 10 fps with boil on the ink. check.mjs prints 0 problems and its contact sheet was read. No subject was drawn with hand-written SVG coordinates."
+    },
+    {
+      "id": 2,
+      "prompt": "Hand-drawn style spot illustration, animated: a lock held in a hand, for a security page. Light coral watercolor.",
+      "expected_output": "A generated drawing judged against references/style.md section 11 (correct fingers, thick marker line), split with layers.py into ink and wash. The hand rises or tilts, the lock pops or clicks shut, the watercolor spreads; a watercolor element never sits on another watercolor area. The loop is seamless and check.mjs prints 0 problems."
+    },
+    {
+      "id": 3,
+      "prompt": "I want a little animation of someone celebrating, in the Anthropic hand-drawn style.",
+      "expected_output": "A pose sheet of one adult character with at least 4 poses (rest, anticipation or arm rising, jump or arms up, return), squash before the jump and on landing, an added element (heart, star or confetti) popping in with a back ease, the full state held at least 1.2 s, 10 fps, boil on, seamless loop, check passes, contact sheet read."
+    }
+  ]
+}
