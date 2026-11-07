@@ -1,19 +1,27 @@
-"""Place real coral watercolor patches behind chosen regions of an ink drawing.
+"""Add real painted watercolor to an accepted ink drawing.
 
 usage:
   python3 -I scripts/color.py DIR --list
-      writes DIR/regions.png: every closed region of the drawing with a number
-  python3 -I scripts/color.py DIR --regions 6,7+8 [--patch wide] [--seed 1] [--close 9]
-      writes DIR/color-wash.png (the watercolor layer), DIR/version-color.jpg
-      (paper + watercolor + ink) and DIR/version-ink.jpg (paper + ink only)
+      writes DIR/regions.png: every closed region of the drawing, numbered
+  python3 -I scripts/color.py DIR [--background] [--regions 6,7+8] [--add "staff@700,260,330,-10;note@860,330,90"]
+      writes DIR/color-wash.png, DIR/version-color.jpg and DIR/version-ink.jpg
 
-DIR holds layer-ink.png (from layers.py). Regions joined by + get one patch
-together. The watercolor is never painted by code: a real painted patch from
-library/_washes (scripts/washes.py) is chosen by shape, scaled a little larger
-than the region, tilted and offset, and placed behind the ink. A region is a connected area of paper
-enclosed by ink; gaps narrower than --close (in half-size pixels) are closed
-first, because hand-drawn contours are often open.
+Three ways to color, chosen per drawing (references/style.md, section 8):
+  --background   one large painted patch behind the whole subject, for depth
+  --regions      a painted patch behind one object (regions joined by + share one)
+  --add          painted motifs that tell the action, kind@x,y,width[,degrees];
+                 kinds are the "kind" fields in library/_motifs/*.json
+
+The watercolor never crosses the rest of the subject: every part of the drawing
+other than the chosen regions stays paper, so people, coins or books in front
+read white, while the patch may overflow into the empty background. Motifs are
+placed on top of that rule, where you put them.
+
+Nothing here paints: every patch and motif is a real painted swatch from a
+generated sheet (scripts/washes.py). A region is a connected area of paper
+enclosed by ink, after closing gaps narrower than --close half-size pixels.
 """
+import glob
 import json
 import sys
 
@@ -22,60 +30,70 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 PAPER = (244, 242, 236)
 CORAL = (240, 128, 110)
+ROOT = __file__.rsplit("/scripts/", 1)[0]
 
 
 def opt(name, default=None):
-    if name in sys.argv:
-        return sys.argv[sys.argv.index(name) + 1]
-    return default
+    return sys.argv[sys.argv.index(name) + 1] if name in sys.argv else default
 
 
 def label(free):
     h, w = free.shape
     lab = np.zeros((h, w), np.int32)
     sizes = [0]
-    current = 0
+    n = 0
     for y0 in range(0, h, 2):
         for x0 in range(0, w, 2):
             if not free[y0, x0] or lab[y0, x0]:
                 continue
-            current += 1
+            n += 1
             stack = [(y0, x0)]
-            lab[y0, x0] = current
-            n = 0
+            lab[y0, x0] = n
+            count = 0
             while stack:
                 y, x = stack.pop()
-                n += 1
+                count += 1
                 for ny, nx in ((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)):
                     if 0 <= ny < h and 0 <= nx < w and free[ny, nx] and not lab[ny, nx]:
-                        lab[ny, nx] = current
+                        lab[ny, nx] = n
                         stack.append((ny, nx))
-            sizes.append(n)
+            sizes.append(count)
     return lab, sizes
 
 
-def blur(a, r):
-    img = Image.fromarray((np.clip(a, 0, 1) * 255).astype(np.uint8))
-    return np.asarray(img.filter(ImageFilter.GaussianBlur(r))).astype(np.float32) / 255
+def grow(mask, size):
+    img = Image.fromarray((mask > 0).astype(np.uint8) * 255)
+    return np.asarray(img.filter(ImageFilter.MaxFilter(size | 1))) > 0
 
 
-def noise(shape, scale, rng):
-    h, w = shape
-    small = rng.random((max(2, h // scale), max(2, w // scale))).astype(np.float32)
-    img = Image.fromarray((small * 255).astype(np.uint8)).resize((w, h), Image.BICUBIC)
+def up(mask, size):
+    img = Image.fromarray((mask > 0).astype(np.uint8) * 255).resize(size, Image.BILINEAR)
     return np.asarray(img).astype(np.float32) / 255
 
 
-def regions_of(ink_alpha, close):
-    small = ink_alpha[::2, ::2]
-    if close > 1:
-        img = Image.fromarray((np.clip(small, 0, 1) * 255).astype(np.uint8))
-        small = np.asarray(img.filter(ImageFilter.MaxFilter(close | 1))).astype(np.float32) / 255
-    free = small < 0.25
-    lab, sizes = label(free)
-    border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]])))
-    keep = [i for i in range(1, len(sizes)) if i not in border and sizes[i] > 150]
-    return lab, keep
+def load(kind_dir):
+    out = []
+    for f in sorted(glob.glob(f"{ROOT}/library/{kind_dir}/patch-*.png")):
+        out.append((f, json.load(open(f[:-4] + ".json"))))
+    return out
+
+
+def stamp(canvas, path, cx, cy, tw, th, degrees):
+    patch = Image.open(path).resize((max(8, int(tw)), max(8, int(th))), Image.LANCZOS)
+    patch = patch.rotate(degrees, expand=True, resample=Image.BICUBIC)
+    pa = np.asarray(patch).astype(np.float32)[..., 3] / 255
+    H, W = canvas.shape
+    px, py = int(cx - pa.shape[1] / 2), int(cy - pa.shape[0] / 2)
+    sx, sy = max(0, -px), max(0, -py)
+    x0, y0, x1, y1 = max(0, px), max(0, py), min(W, px + pa.shape[1]), min(H, py + pa.shape[0])
+    if x1 > x0 and y1 > y0:
+        piece = pa[sy:sy + y1 - y0, sx:sx + x1 - x0]
+        canvas[y0:y1, x0:x1] = 1 - (1 - canvas[y0:y1, x0:x1]) * (1 - piece)
+
+
+def pick(pool, aspect, rng):
+    pool = sorted(pool, key=lambda p: abs(np.log(p[1]["aspect"] / aspect)))
+    return pool[min(len(pool) - 1, int(rng.integers(0, 2)))]
 
 
 def main():
@@ -84,18 +102,23 @@ def main():
         sys.exit(2)
     d = sys.argv[1].rstrip("/")
     ink_img = Image.open(f"{d}/layer-ink.png")
+    W, H = ink_img.size
     ink = np.asarray(ink_img).astype(np.float32)[..., 3] / 255
     close = int(opt("--close", "9"))
-    lab, keep = regions_of(ink, close)
-    grow = close
+    small = ink[::2, ::2]
+    closed = grow(small > 0.25, close) if close > 1 else small > 0.25
+    lab, sizes = label(~closed)
+    border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
+    keep = [i for i in range(1, len(sizes)) if i not in border and sizes[i] > 150]
+
     if "--list" in sys.argv:
-        base = Image.new("RGB", ink_img.size, PAPER)
+        base = Image.new("RGB", (W, H), PAPER)
         base.paste(ink_img, (0, 0), ink_img)
         tint = np.zeros(lab.shape + (4,), np.uint8)
         rng = np.random.default_rng(3)
         for i in keep:
             tint[lab == i] = (*rng.integers(80, 230, 3), 90)
-        over = Image.fromarray(tint, "RGBA").resize(ink_img.size, Image.NEAREST)
+        over = Image.fromarray(tint, "RGBA").resize((W, H), Image.NEAREST)
         base.paste(over, (0, 0), over)
         draw = ImageDraw.Draw(base)
         try:
@@ -104,68 +127,75 @@ def main():
             font = ImageFont.load_default()
         for i in keep:
             ys, xs = np.nonzero(lab == i)
-            cy, cx = int(np.median(ys)) * 2, int(np.median(xs)) * 2
-            draw.text((cx - 10, cy - 14), str(i), fill=(200, 0, 0), font=font)
+            draw.text((int(np.median(xs)) * 2 - 10, int(np.median(ys)) * 2 - 14), str(i), fill=(200, 0, 0), font=font)
         base.save(f"{d}/regions.png")
         print(f"{d}/regions.png: {len(keep)} regions")
         return
-    groups = [[int(v) for v in g.split("+")] for g in opt("--regions", "").split(",") if g]
-    chosen = [i for g in groups for i in g]
-    forced = opt("--patch")
+
     rng = np.random.default_rng(int(opt("--seed", "1")))
-    root = __file__.rsplit("/scripts/", 1)[0]
-    import glob
-    patches = []
-    for f in sorted(glob.glob(f"{root}/library/_washes/patch-*.png")):
-        meta = json.load(open(f[:-4] + ".json"))
-        patches.append((f, meta))
-    if not patches:
-        print("no watercolor patches in library/_washes: run scripts/washes.py on a generated swatch sheet first")
-        sys.exit(1)
-    W, H = ink_img.size
-    wash = np.zeros((H, W), np.float32)
+    washes = [p for p in load("_washes") if p[1].get("kind") not in ("heart", "splash")]
+    motifs = load("_motifs")
+    subject = ~np.isin(lab, list(border))
+    alpha = np.zeros((H, W), np.float32)
+    allowed = np.zeros(lab.shape, bool)
+    notes = []
+
+    if "--background" in sys.argv:
+        ys, xs = np.nonzero(subject)
+        x0, x1, y0, y1 = xs.min() * 2, xs.max() * 2, ys.min() * 2, ys.max() * 2
+        bw, bh = (x1 - x0) * 0.95, (y1 - y0) * 0.8
+        f, meta = pick(washes, bw / bh, rng)
+        cx = (x0 + x1) / 2 + (rng.random() - 0.5) * 0.1 * bw
+        cy = (y0 + y1) / 2 - 0.04 * bh
+        stamp(alpha, f, cx, cy, bw, bh, float((rng.random() - 0.5) * 8))
+        notes.append(f"background: {meta['kind']} patch")
+
+    groups = [[int(v) for v in g.split("+")] for g in (opt("--regions") or "").split(",") if g]
     for g in groups:
-        ys, xs = np.nonzero(np.isin(lab, g))
+        region = np.isin(lab, g)
+        allowed |= grow(region, close)
+        ys, xs = np.nonzero(region)
         x0, x1, y0, y1 = xs.min() * 2, xs.max() * 2, ys.min() * 2, ys.max() * 2
         bw, bh = x1 - x0, y1 - y0
-        aspect = bw / max(1, bh)
-        pool = [p for p in patches if p[1].get("kind") not in ("heart", "splash")]
-        if forced:
-            pool = [p for p in patches if p[1].get("kind") == forced or p[0].endswith(f"patch-{forced.zfill(2)}.png")]
-        pool.sort(key=lambda p: abs(np.log(p[1]["aspect"] / aspect)))
-        f, meta = pool[min(len(pool) - 1, int(rng.integers(0, 2)))]
+        f, meta = pick(washes, bw / max(1, bh), rng)
         over = 1.12 + rng.random() * 0.12
-        tw, th = int(bw * over), int(bh * over)
-        patch = Image.open(f).resize((max(8, tw), max(8, th)), Image.LANCZOS).rotate(float((rng.random() - 0.5) * 10), expand=True, resample=Image.BICUBIC)
-        pa = np.asarray(patch).astype(np.float32)[..., 3] / 255
-        cx = (x0 + x1) / 2 + (rng.random() - 0.5) * 0.12 * bw
-        cy = (y0 + y1) / 2 + (rng.random() - 0.5) * 0.12 * bh
-        px, py = int(cx - pa.shape[1] / 2), int(cy - pa.shape[0] / 2)
-        sx0, sy0 = max(0, -px), max(0, -py)
-        dx0, dy0 = max(0, px), max(0, py)
-        dx1, dy1 = min(W, px + pa.shape[1]), min(H, py + pa.shape[0])
-        if dx1 <= dx0 or dy1 <= dy0:
-            continue
-        piece = pa[sy0:sy0 + dy1 - dy0, sx0:sx0 + dx1 - dx0]
-        region = wash[dy0:dy1, dx0:dx1]
-        wash[dy0:dy1, dx0:dx1] = 1 - (1 - region) * (1 - piece)
-        print(f"regions {g}: {meta.get('kind')} patch, {tw}x{th}")
-    alpha = np.clip(wash, 0, 1)
-    h, w = alpha.shape
-    out = np.zeros((h, w, 4), np.uint8)
+        cx = (x0 + x1) / 2 + (rng.random() - 0.5) * 0.1 * bw
+        cy = (y0 + y1) / 2 + (rng.random() - 0.5) * 0.1 * bh
+        stamp(alpha, f, cx, cy, bw * over, bh * over, float((rng.random() - 0.5) * 10))
+        notes.append(f"regions {g}: {meta['kind']} patch")
+
+    knock = up(subject & ~allowed, (W, H))
+    alpha *= 1 - knock
+
+    for spec in [s for s in (opt("--add") or "").split(";") if s.strip()]:
+        kind, rest = spec.strip().split("@")
+        vals = [float(v) for v in rest.split(",")]
+        x, y, w = vals[:3]
+        deg = vals[3] if len(vals) > 3 else 0
+        match = [p for p in motifs if p[1].get("kind") == kind]
+        if not match:
+            print(f"no motif of kind {kind}; kinds: {sorted({p[1].get('kind') for p in motifs})}")
+            sys.exit(1)
+        f, meta = match[0]
+        stamp(alpha, f, x, y, w, w / meta["aspect"], deg)
+        notes.append(f"motif {kind} at {int(x)},{int(y)}")
+
+    alpha = np.clip(alpha, 0, 1)
+    out = np.zeros((H, W, 4), np.uint8)
     out[..., :3] = CORAL
     out[..., 3] = (alpha * 255).astype(np.uint8)
     wash = Image.fromarray(out, "RGBA")
     wash.save(f"{d}/color-wash.png", optimize=True)
     ys, xs = np.nonzero(alpha > 0.2)
+    bbox = [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())] if len(xs) else None
     with open(f"{d}/color-wash.json", "w") as f:
-        json.dump({"size": [w, h], "bbox": [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())], "regions": groups}, f)
+        json.dump({"size": [W, H], "bbox": bbox, "made_with": sys.argv[2:]}, f)
     for name, layers in (("version-color.jpg", [wash, ink_img]), ("version-ink.jpg", [ink_img])):
-        base = Image.new("RGB", ink_img.size, PAPER)
+        base = Image.new("RGB", (W, H), PAPER)
         for layer in layers:
             base.paste(layer, (0, 0), layer)
         base.save(f"{d}/{name}", quality=92)
-    print(f"{d}: color version from regions {chosen}")
+    print(f"{d}: " + "; ".join(notes))
 
 
 main()

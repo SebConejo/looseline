@@ -64,6 +64,12 @@ No other color, no gradient, no shadow, no texture on ink or paper.
 - **Watercolor is always really painted, never computed.** It comes from the generator: either inside the generated drawing, or as a real painted patch from `library/_washes` placed behind the ink by `scripts/color.py`. A tint computed by code reads as a flat fill, even with noise and grain (rejected 2026-11-07: the piggy bank, guitar and books looked like three flat fills next to the painted door).
 - What makes it watercolor: visible brush strokes, uneven pigment, darker pooling at the rim, light streaks and gaps, paper grain, and a shape that overflows the object instead of filling it.
 - **Every accepted drawing has two versions**: ink only, and with watercolor. Color is always this watercolor.
+- **Coloring is a staging choice, not a fill.** Decide per drawing which of three moves helps the idea, then use one, sometimes two:
+  1. **Background**: one large painted patch behind the whole subject gives depth. The subject stays paper on top of it (the runner in the door, the reader on his books).
+  2. **Object**: a patch behind the one object that carries the idea (the piggy bank). Every other part of the subject in front of it stays paper (the coins, the person sitting on it).
+  3. **Added motif**: painted elements that tell the action, placed around the subject (music notes and a wavy staff around a playing guitar, sparkles around a success, a heart above a gift).
+- Ask "what would an illustrator add to make the idea read?" before choosing. Coloring a small part that carries no meaning (the guitar body, two books of a stack) adds nothing (rejected 2026-11-07).
+- The watercolor never crosses the rest of the subject: only the chosen object, the empty background and placed motifs take color.
 - **A watercolor element never sits on another watercolor area**: coral on coral disappears (rejected: a coral heart rising over a coral background).
 
 ## 9. Composition

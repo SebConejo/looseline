@@ -1,6 +1,9 @@
 """Cut a generated sheet of watercolor swatches into separate wash patches.
 
-usage: python3 -I scripts/washes.py library/_washes/sheet1.jpg library/_washes/
+usage: python3 -I scripts/washes.py SHEET.jpg OUTDIR/ [--merge 15] [--min 3000]
+
+--merge joins strokes closer than that many pixels into one patch (use about
+31 for motifs such as a sparkle made of separate rays).
 
 Each swatch becomes patch-NN.png: the coral color with the painted texture kept
 in the alpha channel (pigment density from the green channel), cropped to the
@@ -21,12 +24,14 @@ def main():
         print(__doc__)
         sys.exit(2)
     src, out = sys.argv[1], sys.argv[2].rstrip("/")
+    merge = int(sys.argv[sys.argv.index("--merge") + 1]) if "--merge" in sys.argv else 15
+    least = int(sys.argv[sys.argv.index("--min") + 1]) if "--min" in sys.argv else 3000
     a = np.asarray(Image.open(src).convert("RGB")).astype(np.float32)
     g, r = a[..., 1], a[..., 0]
     paper = np.percentile(g, 90)
     alpha = np.clip((paper - g) / (paper - np.percentile(g, 1)), 0, 1)
     alpha = np.clip((alpha - 0.1) / 0.9, 0, 1) * (r - g > 25)
-    blob = np.asarray(Image.fromarray((alpha > 0.12).astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(15))) > 0
+    blob = np.asarray(Image.fromarray((alpha > 0.12).astype(np.uint8) * 255).filter(ImageFilter.MaxFilter(merge | 1))) > 0
     h, w = blob.shape
     lab = np.zeros((h, w), np.int32)
     n = 0
@@ -45,7 +50,7 @@ def main():
     k = 0
     for i in range(1, n + 1):
         ys, xs = np.nonzero(lab == i)
-        if len(ys) < 3000:
+        if len(ys) < least:
             continue
         y0, y1, x0, x1 = ys.min(), ys.max() + 1, xs.min(), xs.max() + 1
         part = alpha[y0:y1, x0:x1] * (lab[y0:y1, x0:x1] == i)
