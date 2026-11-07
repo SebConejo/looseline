@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": false,
+    "anatomy": true,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Person climbing coral steps",
+  "reasons": [
+    "line: the staircase outline is thin and doubled or tripled (right edge, base, step treads), a sketchy hairline unlike the figure's marker line"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

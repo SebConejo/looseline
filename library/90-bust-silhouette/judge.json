@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": false
+  },
+  "what_it_shows": "Person above a password field",
+  "reasons": [
+    "The password field under the bust is a UI element: a rectangle with a row of identical filled dots and a cursor, which reads as an interface icon.",
+    "The mouth stroke runs into the jaw line on the right side of the face, so the face reads as a stray line rather than a small mouth curve."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

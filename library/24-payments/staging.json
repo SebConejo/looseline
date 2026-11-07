@@ -1,5 +1,5 @@
 {
   "move": "motifs",
-  "command": "--add \"sparkle@540,215,170;sparkle@650,170,80\"",
-  "why": "Painted sparkles burst above the credit card so the payment reads as done, while the open figure stays white."
+  "command": "--add \"dots@235,465,240,-8\"",
+  "why": "Three painted dots above the terminal read as the payment going through, and the card and face stay white."
 }

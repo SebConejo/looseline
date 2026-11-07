@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": false,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "Globe with pins and travelers",
+  "reasons": [
+    "The globe carries a detailed map of every continent with coastline detail, which is fine detail.",
+    "The coral watercolor is a large wash covering most of the center, not sparing.",
+    "Globe, three pins, two heads, dashed routes and a map make too many elements for a calm editorial drawing."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

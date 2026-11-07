@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "three people, tangled arms",
+  "reasons": [
+    "anatomy: arms are a knot of crossing lines; no arm can be traced to a shoulder or hand",
+    "idea: the linking gesture does not read",
+    "grace: the central tangle looks like a mistake, not a design"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

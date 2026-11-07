@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "three heads, unclear shape",
+  "reasons": [
+    "The middle head sits inside a large looping shape that reads as a hairdo or helmet, so the idea is not legible.",
+    "That shape reads as hair, which the style forbids.",
+    "The connecting curve between the mouths and the nested outlines look confused rather than elegant."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

@@ -1,0 +1,5 @@
+{
+  "move": "regions",
+  "command": "--regions 2",
+  "why": "A patch inside the circle makes the check mark the bold center of the drawing."
+}

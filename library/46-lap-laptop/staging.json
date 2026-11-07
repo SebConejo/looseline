@@ -1,5 +1,5 @@
 {
-  "move": "regions",
-  "command": "--regions 3",
-  "why": "A patch on the laptop screen marks the screen as what holds the man's attention."
+  "move": "background",
+  "command": "--background",
+  "why": "A large patch behind the seated man gives the scene depth while he and his laptop stay white."
 }

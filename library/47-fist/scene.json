@@ -1,0 +1,176 @@
+{
+ "title": "Raised fist above a crowd",
+ "caption": "The generated coral wash behind the raised fist is really painted and makes the fist the one object that carries the idea above the crowd.",
+ "size": [
+  1024,
+  1024
+ ],
+ "fps": 10,
+ "loop": 5400,
+ "still": 2600,
+ "boil": {
+  "freq": 0.018,
+  "scale": 5
+ },
+ "layers": [
+  {
+   "id": "wash",
+   "kind": "wash",
+   "src": "layer-wash.png",
+   "origin": [
+    512,
+    490
+   ],
+   "reveal": {
+    "type": "bloom",
+    "cx": 512,
+    "cy": 490,
+    "radius": 619,
+    "track": [
+     [
+      0,
+      0
+     ],
+     [
+      500,
+      0
+     ],
+     [
+      1500,
+      1
+     ],
+     [
+      4300,
+      1
+     ],
+     [
+      4900,
+      0
+     ],
+     [
+      5400,
+      0
+     ]
+    ]
+   },
+   "track": {
+    "scale": [
+     [
+      0,
+      0.92
+     ],
+     [
+      500,
+      0.92
+     ],
+     [
+      1500,
+      1
+     ],
+     [
+      4300,
+      1
+     ],
+     [
+      4900,
+      0.92
+     ],
+     [
+      5400,
+      0.92
+     ]
+    ]
+   }
+  },
+  {
+   "id": "drawing",
+   "kind": "ink",
+   "src": "layer-ink.png",
+   "boil": true,
+   "origin": [
+    512,
+    874
+   ],
+   "track": {
+    "opacity": [
+     [
+      0,
+      0
+     ],
+     [
+      250,
+      1,
+      "linear"
+     ],
+     [
+      4700,
+      1
+     ],
+     [
+      5000,
+      0,
+      "linear"
+     ],
+     [
+      5400,
+      0
+     ]
+    ],
+    "y": [
+     [
+      0,
+      24
+     ],
+     [
+      600,
+      0,
+      "back"
+     ],
+     [
+      4700,
+      0
+     ],
+     [
+      5000,
+      16,
+      "in"
+     ],
+     [
+      5400,
+      24
+     ]
+    ],
+    "sy": [
+     [
+      0,
+      1
+     ],
+     [
+      700,
+      1
+     ],
+     [
+      1700,
+      1.018
+     ],
+     [
+      2700,
+      0.99
+     ],
+     [
+      3700,
+      1.018
+     ],
+     [
+      4500,
+      1
+     ],
+     [
+      5400,
+      1
+     ]
+    ]
+   }
+  }
+ ]
+}

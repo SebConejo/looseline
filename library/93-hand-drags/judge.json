@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Person drags box along arrow",
+  "reasons": [
+    "anatomy: the reaching arm grows out of the back of the head/neck instead of a shoulder, and a second open arm stroke starts on the chest and stops in mid-air",
+    "anatomy: the hand on the left box has four tube fingers and no thumb",
+    "grace: the misplaced arm makes the figure read as awkward rather than elegant"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

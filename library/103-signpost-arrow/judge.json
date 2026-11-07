@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": false,
+    "color": false,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "People walking past signpost",
+  "reasons": [
+    "space: the leftmost and rightmost walkers are cut by the image edges",
+    "color: the figures are filled with solid black bodysuits, not line plus optional coral",
+    "grace: identical filled walkers and a ruled rectangular post feel stiff and stamped"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

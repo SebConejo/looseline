@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "two people holding the globe",
+  "reasons": [
+    "simple: the globe carries a detailed continent map with islands",
+    "grace: rigid mirror symmetry, stiff stock-symbol feel"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

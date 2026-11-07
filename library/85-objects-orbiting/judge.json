@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": false
+  },
+  "what_it_shows": "People around orbiting objects",
+  "reasons": [
+    "The central symbol is a scribbled circle with a cross, which does not read as anything, and the orbiting rock, book and gears are unrelated.",
+    "The two small gears are regular icon gears.",
+    "Four heads plus four orbiting objects and motion arcs feel cluttered rather than calm."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

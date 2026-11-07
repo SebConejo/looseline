@@ -1,5 +1,5 @@
 {
-  "move": "regions",
-  "command": "--regions 2",
-  "why": "A patch in the sky of the globe makes the little world inside glow as the thing the people gaze at, while the mountain, cabin, base and people stay white."
+  "move": "source",
+  "command": "--from-source",
+  "why": "The generated wash fills the globe, which is the whole idea, and touches no face."
 }

@@ -1,0 +1,5 @@
+{
+  "move": "regions",
+  "command": "--regions 3+2+4",
+  "why": "One wall patch behind the three windows puts the weight on the open windows behind him, while the man and the laptop stay white."
+}

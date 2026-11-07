@@ -7,7 +7,9 @@ usage:
   python3 -I scripts/color.py DIR --list
       writes DIR/regions.png: every closed region of the drawing, numbered
   python3 -I scripts/color.py DIR [--background] [--regions 6,7+8] [--add "staff@700,260,330,-10;note@860,330,90"]
-      writes DIR/color-wash.png, DIR/version-color.jpg and DIR/version-ink.jpg
+      writes DIR/color-wash.png (all color), DIR/color-patch.png and
+      DIR/color-motifs.png (the two kinds apart, for animation),
+      DIR/version-color.jpg and DIR/version-ink.jpg
 
 Three ways to color, chosen per drawing (references/style.md, section 8):
   --background   one large painted patch behind the whole subject, for depth
@@ -178,6 +180,8 @@ def main():
 
     knock = up(subject & ~allowed, (W, H))
     alpha *= 1 - knock
+    patch_alpha = alpha.copy()
+    motif_alpha = np.zeros((H, W), np.float32)
 
     for spec in [s for s in (opt("--add") or "").split(";") if s.strip()]:
         kind, rest = spec.strip().split("@")
@@ -189,10 +193,28 @@ def main():
             print(f"no motif of kind {kind}; kinds: {sorted({p[1].get('kind') for p in motifs})}")
             sys.exit(1)
         f, meta = match[0]
-        stamp(alpha, f, x, y, w, w / meta["aspect"], deg)
+        stamp(motif_alpha, f, x, y, w, w / meta["aspect"], deg)
         notes.append(f"motif {kind} at {int(x)},{int(y)}")
 
-    alpha = np.clip(alpha, 0, 1)
+    def layer(a, name):
+        a = np.clip(a, 0, 1)
+        o = np.zeros((H, W, 4), np.uint8)
+        o[..., :3] = CORAL
+        o[..., 3] = (a * 255).astype(np.uint8)
+        path = f"{d}/{name}.png"
+        if a.max() > 0.05:
+            Image.fromarray(o, "RGBA").save(path, optimize=True)
+            ys, xs = np.nonzero(a > 0.2)
+            with open(f"{d}/{name}.json", "w") as f:
+                json.dump({"size": [W, H], "bbox": [int(xs.min()), int(ys.min()), int(xs.max()), int(ys.max())] if len(xs) else None}, f)
+        else:
+            import os
+            for ext in (".png", ".json"):
+                if os.path.exists(f"{d}/{name}{ext}"):
+                    os.remove(f"{d}/{name}{ext}")
+    layer(patch_alpha, "color-patch")
+    layer(motif_alpha, "color-motifs")
+    alpha = np.clip(1 - (1 - patch_alpha) * (1 - motif_alpha), 0, 1)
     out = np.zeros((H, W, 4), np.uint8)
     out[..., :3] = CORAL
     out[..., 3] = (alpha * 255).astype(np.uint8)

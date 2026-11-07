@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Arrows hitting a shield",
+  "reasons": [
+    "The two lower arrows cross the shield outline and their heads sit inside the shield, so the shield does not read as blocking.",
+    "Six arrows with geometric triangle heads and stacked fletching around a symmetric shield look stiff and clip-art."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

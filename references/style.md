@@ -36,11 +36,17 @@ Two parts that touch along a length (pressed fingers, an arm against the body, l
 - Slight distortions of scale help the meaning (an oversized hand that holds something).
 - Flat, two-dimensional. Never isometric or 3D.
 
+## 5b. Simple and imperfect
+
+- **Few elements, no fine detail.** One subject, one or two objects. A document is a few wavy lines, a screen holds two or three marks at most, never a full interface (rejected: the crowded dashboard screen, the detailed papers and house picture under a magnifier).
+- **Objects are drawn by hand, never precise.** A calculator, a card or a gear leans, its keys are a few uneven marks, its lines wobble (rejected: a calculator that looked technical and perfect).
+- **No written AI.** Artificial intelligence is never the letters "AI": show an abstract spark or a soft knot of lines, never a real company logo (rejected: a gear marked AI, stock-photo look).
+
 ## 6. People
 
 - Adult editorial silhouettes in profile or three-quarter view.
 - Small head; the nose is part of the contour; a closed eye is a short curve; at most a mouth line.
-- One flowing contour; simplified hands; no anatomy, no hair strands, no clothing detail.
+- One flowing contour; simplified hands; no anatomy, no hair. **Clothes are suggested, never drawn**: no suits, collars, ties, buttons or pockets. A bare silhouette reads as dressed (accepted: the people around the checklist; rejected: suits in the exchange and snow-globe scenes).
 - **Never a round smiley head with dot eyes and a smile arc.** It reads as a children's emoji (rejected).
 - Gestures carry the meaning and may be exaggerated.
 
@@ -68,7 +74,7 @@ No other color, no gradient, no shadow, no texture on ink or paper.
   1. **Background**: one large painted patch behind the whole subject gives depth. The subject stays paper on top of it (the runner in the door, the reader on his books).
   2. **Object**: a patch behind the one object that carries the idea (the piggy bank). Every other part of the subject in front of it stays paper (the coins, the person sitting on it).
   3. **Added motif**: painted elements that tell the action, placed around the subject (music notes and a wavy staff around a playing guitar, sparkles around a success, a heart above a gift).
-- Ask "what would an illustrator add to make the idea read?" before choosing. Coloring a small part that carries no meaning (the guitar body, two books of a stack) adds nothing (rejected 2026-11-07).
+- Ask "what would an illustrator add to make the idea read?" before choosing. A generic patch behind a group or an object that does not point at the idea fails (rejected: the patch behind the network tree, the patch behind the exchanged folder, the sparkles over the payment card). Coloring a small part that carries no meaning (the guitar body, two books of a stack) adds nothing (rejected 2026-11-07).
 - The watercolor never crosses the rest of the subject: only the chosen object, the empty background and placed motifs take color.
 - **A watercolor element never sits on another watercolor area**: coral on coral disappears (rejected: a coral heart rising over a coral background).
 

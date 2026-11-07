@@ -1,0 +1,20 @@
+{
+  "pass": true,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "pensive man sitting on chair",
+  "reasons": [],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

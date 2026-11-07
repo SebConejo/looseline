@@ -9,11 +9,12 @@
     "grace": true,
     "space": true,
     "color": true,
-    "poses": true
+    "poses": true,
+    "simple": true,
+    "loose": true
   },
-  "what_it_shows": "Person with calculator, card, receipt",
+  "what_it_shows": "person paying with card",
   "reasons": [],
-  "judge": "references/judge.md, fresh agent",
-  "round": 2,
+  "judge": "references/judge.md v3, fresh agent",
   "date": "2026-11-07"
 }

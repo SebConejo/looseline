@@ -1,5 +1,5 @@
 {
-  "move": "source",
-  "command": "--from-source",
-  "why": "The generated wash behind the hands over the eyes is really painted and stresses the act of not looking."
+  "move": "regions",
+  "command": "--regions 11",
+  "why": "A patch inside the password field marks the hidden secret while the face and hands stay white."
 }

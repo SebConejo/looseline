@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "hand offering heart, person behind",
+  "reasons": [
+    "anatomy: the fingers of the cupped hand are a tangle of overlapping lines with an unclear count",
+    "anatomy: the arm rises from the bottom edge and does not connect to the person's body; the jaw line floats"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": false,
+    "anatomy": false,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "person balancing on one leg",
+  "reasons": [
+    "anatomy: both hands end in forked two-prong stubs with no readable fingers",
+    "line: the back contour from shoulder to hip is wobbly and jittery"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

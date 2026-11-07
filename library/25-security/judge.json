@@ -3,22 +3,22 @@
   "answers": {
     "idea": true,
     "handmade": true,
-    "line": false,
-    "anatomy": true,
+    "line": true,
+    "anatomy": false,
     "characters": true,
     "grace": false,
-    "space": false,
-    "color": false,
-    "poses": true
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
   },
-  "what_it_shows": "Shield, padlock, fingerprint, two people",
+  "what_it_shows": "Four people around fingerprint padlock",
   "reasons": [
-    "Color: heavy coral washes fill large blobs behind the shield, padlock and fingerprint; not sparing.",
-    "Line: thin wandering lines cross through the padlock, much thinner than the main marker line.",
-    "Space: the top half is crowded with three large icons plus washes; little calm empty space.",
-    "Grace: a stacked set of security icons (shield, keyhole padlock, fingerprint) reads as clip-art."
+    "anatomy: the two back figures have stick legs and feet showing between the front figures and the lock, so their bodies do not read",
+    "simple: the dense fingerprint whorl in the lock is fine detail",
+    "grace: crowded symmetric arrangement of four figures looks stiff"
   ],
-  "judge": "references/judge.md, fresh agent",
-  "round": 2,
+  "judge": "references/judge.md v3, fresh agent",
   "date": "2026-11-07"
 }

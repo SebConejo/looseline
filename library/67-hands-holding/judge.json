@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Two people lifting a star",
+  "reasons": [
+    "The raised arms carry three contour lines each: an extra floating line starts mid-torso (around x=320,y=500 on the left, x=695,y=490 on the right) and joins the hand, so the arms read as doubled limbs.",
+    "The star is a regular geometric five-point shape and the figures are stiff and symmetrical, closer to clip-art than a one-gesture drawing."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": false,
+    "anatomy": true,
+    "characters": true,
+    "grace": true,
+    "space": false,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "envelope of cash, two people",
+  "reasons": [
+    "The two background figures are drawn in a faint grey hairline, not a marker line.",
+    "Both background figures are cut by the left, right and bottom edges, so the subject has no calm margin.",
+    "The banknotes carry printed-note detail (corner notches, a seal circle) and the scene stacks two layers of subject."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

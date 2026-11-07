@@ -1,0 +1,5 @@
+{
+  "move": "regions",
+  "command": "--regions 9+14+15+4",
+  "why": "A patch behind the open notebook marks what the group is reading, and the readers stay white."
+}

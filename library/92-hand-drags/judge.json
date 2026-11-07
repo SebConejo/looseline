@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "Hand moves frame on monitor",
+  "reasons": [
+    "idea: the hand grabbing a frame over three people on a monitor does not read clearly as one action",
+    "grace: the body lines of the three people pass straight through the inner frame's bottom edge, which looks like a drawing glitch",
+    "simple: a desktop monitor with a nested window is a screen/interface, and the double-line bezel adds precise, technical detail"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

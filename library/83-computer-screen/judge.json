@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Person, monitor, flying envelope",
+  "reasons": [
+    "The person's throat line runs into the bottom edge of the monitor, so the body and the screen merge at the chin.",
+    "The monitor frame is broken into disjoint segments and the person's shoulder passes in front of the stand, which makes the composition tangled rather than elegant."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

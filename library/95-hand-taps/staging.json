@@ -1,0 +1,5 @@
+{
+  "move": "regions",
+  "command": "--regions 5",
+  "why": "A patch on the tablet screen marks the surface the finger taps; the hand and face stay white."
+}

@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": true,
+    "line": false,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": false,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "rising chart over people",
+  "reasons": [
+    "The left figure is a fragment cut by the left and bottom edges, and the right figure is cut by the right edge.",
+    "The relation between the floating dots, the chart and the people is not readable.",
+    "The chart stroke swells and splits into a double line at both ends, which reads as a blob rather than a confident marker line."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

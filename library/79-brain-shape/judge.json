@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": false
+  },
+  "what_it_shows": "Gears turning inside a brain",
+  "reasons": [
+    "The two gears in the center are regular, evenly toothed icon gears, the 'perfect gear' the brief rejects.",
+    "The brain outline ends in a pointed tail at the bottom, so it reads as a speech bubble; with the icon gears the whole reads as clip-art."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

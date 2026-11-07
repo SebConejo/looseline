@@ -1,0 +1,5 @@
+{
+  "move": "motifs",
+  "command": "--add \"dots@105,300,170,0;star@85,160,120,-10\"",
+  "why": "A row of dots leading out of the binoculars to a distant star tells that he looks far away."
+}

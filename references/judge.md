@@ -19,8 +19,12 @@ Rejected:
 - Stick figures with a perfectly round front-facing head, two dot eyes and a smile arc, like emoji (childish).
 - A figure built from geometric parts: a circle head, a rectangle body, straight bars for arms at right angles, like a restroom sign (computer-made).
 - An icon-like hand made of identical capsule fingers, a striped rectangular cuff and symmetrical sparkle crosses (clip-art).
+- A precise, technical calculator next to a bank card and receipts (too perfect).
+- Two people in suits and ties exchanging a folder; people in coats around a snow globe (clothing detail).
+- A man sitting on a gear lettered "AI" (stock-photo symbol).
+- A person at a desk examining detailed papers with a house picture and many lines (too detailed).
 
-The line between the two lists: accepted drawings have flowing contours that a hand drew in one gesture; rejected ones are assembled from geometric primitives or emoji conventions.
+The line between the two lists: accepted drawings have flowing contours that a hand drew in one gesture, few elements and no clothing detail; rejected ones are assembled from geometric primitives or emoji conventions, or carry too much precise detail.
 
 ## Questions
 
@@ -33,6 +37,8 @@ The line between the two lists: accepted drawings have flowing contours that a h
 7. **space**: Is there calm empty space around the subject, with nothing cut by the edge unless clearly on purpose?
 8. **color**: Is the only color a sparing, painted-looking coral watercolor (or none at all)?
 9. **poses**: If the image shows the same character several times (a pose sheet), is it clearly the same character, same size, same baseline, with space between the poses? Answer yes if it is not a pose sheet.
+10. **simple**: Are there few elements and no fine detail: no crowded screen or interface, no detailed document, no clothing detail (suits, collars, ties, buttons, pockets), no hair? Answer no if any of these appears.
+11. **loose**: Are objects drawn loosely by hand, rather than precise and technical (a perfect calculator, a perfect gear), and is there no written "AI" or company logo?
 
 ## Verdict
 
@@ -43,7 +49,7 @@ Reply with JSON only, no other text:
 ```json
 {
   "image": "<file name>",
-  "answers": { "idea": true, "handmade": true, "line": true, "anatomy": true, "characters": true, "grace": true, "space": true, "color": true, "poses": true },
+  "answers": { "idea": true, "handmade": true, "line": true, "anatomy": true, "characters": true, "grace": true, "space": true, "color": true, "poses": true, "simple": true, "loose": true },
   "what_it_shows": "<five words>",
   "pass": true,
   "reasons": ["<for each no: what exactly is wrong, where in the image>"]

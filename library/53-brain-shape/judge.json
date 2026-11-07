@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": false,
+    "handmade": false,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": false
+  },
+  "what_it_shows": "brain, monitor and sheet",
+  "reasons": [
+    "idea: three unrelated objects side by side; no single message reads in five words",
+    "handmade/loose: the monitor is a double rectangle with straight rods and right angles, computer-made",
+    "grace: stiff object inventory, clip-art feel"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

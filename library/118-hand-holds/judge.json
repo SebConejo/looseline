@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "hand holding chat phone",
+  "reasons": [
+    "The four fingers on the right are identical stacked round lumps that do not join a palm.",
+    "The wrist lines do not connect to the hand, and the left forearm line runs behind the phone without forming a palm.",
+    "The hand reads as an icon of capsule fingers, close to the rejected clip-art hand."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

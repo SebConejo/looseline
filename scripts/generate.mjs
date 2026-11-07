@@ -3,8 +3,8 @@ import { writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
 const STYLE =
-  "Minimal hand-drawn editorial illustration. One thick black felt-tip marker line (#1B1B1A): confident, thick-thin stroke, blunt ends, slightly rough edge, open contours, simplified symbolic shapes. People are adult editorial silhouettes in profile or three-quarter view, small head, nose in the contour, closed eye as a short curve; never a round smiley head or dot eyes. Plain warm off-white background (#FAF9F6), lots of empty space. No text, no shading, no gradient, no frame, no shadow.";
-const WASH = " Coral watercolor (#F5A39B) only where asked: loose, translucent, paper grain, not following the contour.";
+  "Loose hand-drawn editorial sketch with one thick black felt-tip marker line (#1B1B1A): thick-thin, blunt ends, slightly wobbly and imperfect, few lines, no fine detail. Draw only what is described: no extra people, heads or objects. People are bald adult silhouettes in profile or three-quarter view, nose in the contour, a closed-eye curve, bodies suggested without any clothing detail (no collars, ties, buttons, pockets, hair); never a round smiley head. Objects simplified and imperfect, never precise or technical. Plain off-white background (#FAF9F6), lots of empty space. No words or letters, no icons, no shading, no gradient, no frame.";
+const WASH = " Coral watercolor (#F5A39B) only where asked: loose, translucent, paper grain.";
 const NO_WASH = " No color at all, black ink only.";
 
 const args = process.argv.slice(2);

@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "two people talking, speech bubbles",
+  "reasons": [
+    "anatomy: arms are inverted U arches floating inside each torso, not attached at the shoulders",
+    "grace: mirror-symmetric, stiff composition with empty icon speech bubbles"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

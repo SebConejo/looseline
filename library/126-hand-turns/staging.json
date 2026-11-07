@@ -1,0 +1,5 @@
+{
+  "move": "motifs",
+  "command": "--add \"swoosh@905,330,170,-75;swoosh@905,560,170,75\"",
+  "why": "Two curved swooshes around the knob show it turning, with the hand-face left white."
+}

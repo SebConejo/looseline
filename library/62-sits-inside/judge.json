@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": false,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "person lounging in a goblet",
+  "reasons": [
+    "color: coral fills the whole figure and goblet, not sparing",
+    "anatomy: raised hands carry five to six spiky fingers each",
+    "grace: cartoonish, childish rendering"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

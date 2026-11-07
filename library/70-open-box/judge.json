@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": false,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "Open box facing a crowd",
+  "reasons": [
+    "Four heads are crowded on the right and cut by the right and bottom edges.",
+    "The box holds detailed folders and papers, too much fine detail.",
+    "The composition is busy and unbalanced rather than calm and elegant."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

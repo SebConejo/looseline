@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": false,
+    "line": true,
+    "anatomy": true,
+    "characters": false,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "People on stairs, big checkmark",
+  "reasons": [
+    "handmade: the staircase and figures are built from rectangles and right angles, restroom-sign style",
+    "characters: the three figures are pictogram blobs with round heads and rectangle bodies, not editorial silhouettes",
+    "grace: the composition reads as an icon, and the middle figure sits oddly inside the checkmark"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

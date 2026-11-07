@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Two hands clapping",
+  "reasons": [
+    "anatomy: the overlapping fingers of the two hands do not resolve; finger strokes end loose in the palm and the count per hand cannot be read",
+    "grace: the clap with symmetric motion ticks around it reads as the clapping-hands emoji, clip-art"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

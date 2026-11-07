@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": false
+  },
+  "what_it_shows": "hand holding bursting jar",
+  "reasons": [
+    "The jar is disjointed: its top sits right of the hand while its bottom reappears under the wrist shifted left, so the two halves do not line up.",
+    "The hand is a blocky mitten with a rectangular wrist and stacked parallel finger bars; it reads stiff and clip-art.",
+    "The burst includes a symmetrical star sparkle, an icon convention."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

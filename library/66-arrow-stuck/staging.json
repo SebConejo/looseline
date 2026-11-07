@@ -1,0 +1,5 @@
+{
+  "move": "regions",
+  "command": "--regions 6",
+  "why": "A patch behind the target rings makes it read as a target with a white bullseye where the arrow lands."
+}

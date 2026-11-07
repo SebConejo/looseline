@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "rocket launching among stars",
+  "reasons": [
+    "Eight five-point stars scattered around the rocket read as clip-art doodle decoration.",
+    "The rocket is assembled from stock parts (round porthole, fins, nozzle block), giving a children's sticker look rather than an editorial drawing."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

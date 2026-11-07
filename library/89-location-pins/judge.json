@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": false,
+    "line": true,
+    "anatomy": true,
+    "characters": false,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": false
+  },
+  "what_it_shows": "Pins holding portrait avatars",
+  "reasons": [
+    "Each pin is a double near-perfect circle with a portrait inside, the convention of a map-avatar icon, so it reads as clip-art.",
+    "The top-right figure faces nearly front with a nose drawn as a hook outside the face axis and a shoulder line that looks like a badge photo, not an editorial silhouette."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

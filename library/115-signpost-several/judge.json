@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": false,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": true,
+    "space": false,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "people under a signpost",
+  "reasons": [
+    "All four people are cut by the bottom edge and the outer ones by the side edges.",
+    "Four people plus four signs crowd the frame instead of a few elements.",
+    "The faces carry solid black shadow shapes and doubled outlines that look generated rather than drawn in one gesture."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

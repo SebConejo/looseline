@@ -1,0 +1,5 @@
+{
+  "move": "source",
+  "command": "--from-source",
+  "why": "The generated wash runs along the infinity loop and stays below the two faces, so it stresses the endless bond."
+}

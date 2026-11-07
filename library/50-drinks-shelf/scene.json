@@ -1,0 +1,176 @@
+{
+ "title": "Coffee pot and cups shelf",
+ "caption": "One wide patch behind the shelf sets the drinks against a warm wall, while the pot, cups and jar stay white.",
+ "size": [
+  1024,
+  1024
+ ],
+ "fps": 10,
+ "loop": 5400,
+ "still": 2600,
+ "boil": {
+  "freq": 0.018,
+  "scale": 5
+ },
+ "layers": [
+  {
+   "id": "wash",
+   "kind": "wash",
+   "src": "color-patch.png",
+   "origin": [
+    541,
+    502
+   ],
+   "reveal": {
+    "type": "bloom",
+    "cx": 541,
+    "cy": 502,
+    "radius": 447,
+    "track": [
+     [
+      0,
+      0
+     ],
+     [
+      500,
+      0
+     ],
+     [
+      1500,
+      1
+     ],
+     [
+      4300,
+      1
+     ],
+     [
+      4900,
+      0
+     ],
+     [
+      5400,
+      0
+     ]
+    ]
+   },
+   "track": {
+    "scale": [
+     [
+      0,
+      0.92
+     ],
+     [
+      500,
+      0.92
+     ],
+     [
+      1500,
+      1
+     ],
+     [
+      4300,
+      1
+     ],
+     [
+      4900,
+      0.92
+     ],
+     [
+      5400,
+      0.92
+     ]
+    ]
+   }
+  },
+  {
+   "id": "drawing",
+   "kind": "ink",
+   "src": "layer-ink.png",
+   "boil": true,
+   "origin": [
+    521,
+    672
+   ],
+   "track": {
+    "opacity": [
+     [
+      0,
+      0
+     ],
+     [
+      250,
+      1,
+      "linear"
+     ],
+     [
+      4700,
+      1
+     ],
+     [
+      5000,
+      0,
+      "linear"
+     ],
+     [
+      5400,
+      0
+     ]
+    ],
+    "y": [
+     [
+      0,
+      24
+     ],
+     [
+      600,
+      0,
+      "back"
+     ],
+     [
+      4700,
+      0
+     ],
+     [
+      5000,
+      16,
+      "in"
+     ],
+     [
+      5400,
+      24
+     ]
+    ],
+    "sy": [
+     [
+      0,
+      1
+     ],
+     [
+      700,
+      1
+     ],
+     [
+      1700,
+      1.018
+     ],
+     [
+      2700,
+      0.99
+     ],
+     [
+      3700,
+      1.018
+     ],
+     [
+      4500,
+      1
+     ],
+     [
+      5400,
+      1
+     ]
+    ]
+   }
+  }
+ ]
+}

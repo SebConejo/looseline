@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": false,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": false,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "Team pointing at rising chart",
+  "reasons": [
+    "The bars are ruled rectangles, computer-like.",
+    "The figures wear collars and jacket lines; the middle figure has tie-like lines at the neck (clothing detail).",
+    "Three people, three bars and an arrow make a crowded, stock-photo business scene with little empty space."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

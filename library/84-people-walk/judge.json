@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Two people walking with bags",
+  "reasons": [
+    "Between the two figures, around the middle, the arms and legs are ambiguous: a hanging hand and a loose vertical stroke below it cannot be assigned to either body and read as an extra limb segment."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

@@ -2,21 +2,23 @@
   "pass": false,
   "answers": {
     "idea": true,
-    "handmade": true,
+    "handmade": false,
     "line": true,
-    "anatomy": false,
+    "anatomy": true,
     "characters": true,
     "grace": false,
     "space": true,
     "color": true,
-    "poses": true
+    "poses": true,
+    "simple": false,
+    "loose": true
   },
-  "what_it_shows": "House with pin, people around",
+  "what_it_shows": "Two people, house, location pin",
   "reasons": [
-    "The figure at bottom center is a floating head and shoulders with no body, unlike the three full-body walkers.",
-    "The four small figures differ in scale and style and are scattered like icons around a centred house and pin, which reads stiff and clip-art rather than elegant."
+    "simple: the back figure has a solid black shirt body under an outlined head, a clothing reading",
+    "grace: heavy solid black fills on both figures break the line-drawing style and look heavy",
+    "handmade: the house roof lines overshoot and the perspective breaks, reading as a flawed assembly"
   ],
-  "judge": "references/judge.md, fresh agent",
-  "round": 2,
+  "judge": "references/judge.md v3, fresh agent",
   "date": "2026-11-07"
 }

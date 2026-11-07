@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "two people touching hands",
+  "reasons": [
+    "On the left figure the far arm starts mid-back at waist height (around x=235, y=565) with no shoulder; the right figure mirrors the same detached arm root, so the arms do not attach at plausible places."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

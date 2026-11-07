@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": false,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Money bag with coins",
+  "reasons": [
+    "color: the coral covers the whole bag and every coin with glossy highlight patches, a full fill rather than a sparing loose wash"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

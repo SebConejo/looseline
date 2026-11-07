@@ -1,0 +1,24 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": false,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "open book with two portraits",
+  "reasons": [
+    "The right-page portrait is front-facing with open eyes and a drawn mouth, close to the rejected emoji convention.",
+    "The left portrait has stray vertical strokes on the shoulders, which read as errors.",
+    "Two framed portraits inside a multi-page book with doubled edges add more elements and detail than the style allows."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

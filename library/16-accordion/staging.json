@@ -1,0 +1,5 @@
+{
+  "move": "motifs",
+  "command": "--add \"notes@840,180,120;staff@820,690,320,-10;note@180,250,80\"",
+  "why": "Painted notes and a wavy staff around the player make the accordion sound, and the man stays white."
+}

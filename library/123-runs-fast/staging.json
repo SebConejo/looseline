@@ -1,0 +1,5 @@
+{
+  "move": "motifs",
+  "command": "--add \"swoosh@170,330,200,-8;swoosh@190,560,170,-8\"",
+  "why": "Two painted swooshes trailing behind the runner tell his speed, and the runner stays white."
+}

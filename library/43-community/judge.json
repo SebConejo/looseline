@@ -4,18 +4,21 @@
     "idea": true,
     "handmade": true,
     "line": true,
-    "anatomy": true,
+    "anatomy": false,
     "characters": true,
     "grace": false,
     "space": true,
-    "color": true,
-    "poses": true
+    "color": false,
+    "poses": true,
+    "simple": true,
+    "loose": true
   },
-  "what_it_shows": "network of connected profile heads",
+  "what_it_shows": "four connected bald heads",
   "reasons": [
-    "grace: the connecting lines tangle into a dense web that runs across the busts, the central figure especially, so the drawing reads cluttered rather than calm"
+    "Body contours end in blunt capped stubs (lower left of top-left figure, right shoulder of top-right figure, right side of bottom-right figure) that read as cable plugs, not shoulders.",
+    "Neck and shoulder lines turn into wandering looped wires between the figures, so the bodies dissolve into cords instead of reading as people.",
+    "Coral watercolor fills all four heads and torsos almost entirely; it is heavy, not sparing."
   ],
-  "judge": "references/judge.md, fresh agent",
-  "round": 2,
+  "judge": "references/judge.md v3, fresh agent",
   "date": "2026-11-07"
 }

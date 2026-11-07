@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": true,
+    "loose": true
+  },
+  "what_it_shows": "Two people holding a checklist",
+  "reasons": [
+    "anatomy: the hand gripping the top-left of the board has no arm connected to either body, and stray vertical torso lines on both figures read as extra limbs"
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

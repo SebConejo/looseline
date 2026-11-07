@@ -4,19 +4,20 @@
     "idea": true,
     "handmade": true,
     "line": true,
-    "anatomy": false,
+    "anatomy": true,
     "characters": true,
-    "grace": true,
+    "grace": false,
     "space": true,
     "color": true,
-    "poses": true
+    "poses": true,
+    "simple": true,
+    "loose": false
   },
-  "what_it_shows": "person pushing a rocket",
+  "what_it_shows": "Man running beside rocket",
   "reasons": [
-    "The rocket's right edge runs into the figure's hip and front leg (center), creating a loop where body and rocket cannot be told apart.",
-    "Only one arm is readable and the pose (kneeling back leg, extended front leg) does not read cleanly as running."
+    "grace: stiff figure with lumpy fists next to a stock rocket icon, reads childish/clip-art",
+    "loose: the rocket is a standard icon (pointed nose, porthole circle, symmetric fins), not a loose hand-drawn object"
   ],
-  "judge": "references/judge.md, fresh agent",
-  "round": 2,
+  "judge": "references/judge.md v3, fresh agent",
   "date": "2026-11-07"
 }

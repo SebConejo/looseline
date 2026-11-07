@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": true,
+    "space": true,
+    "color": true,
+    "poses": true,
+    "simple": false,
+    "loose": true
+  },
+  "what_it_shows": "Person shouting into megaphone",
+  "reasons": [
+    "The torso and arm are built from disconnected inner strokes: a line from the neck to the chest and another short stroke across the chest do not belong clearly to the arm or the body.",
+    "A line across the wrist marks a sleeve cuff, which is clothing detail."
+  ],
+  "judge": "references/judge.md v3, fresh agent",
+  "date": "2026-11-07"
+}

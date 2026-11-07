@@ -1,0 +1,178 @@
+{
+ "title": "Laptop surrounded by papers",
+ "caption": "Two painted swooshes around the papers show them whirling around the laptop, and the laptop and papers stay white.",
+ "size": [
+  1024,
+  1024
+ ],
+ "fps": 10,
+ "loop": 5400,
+ "still": 2600,
+ "boil": {
+  "freq": 0.018,
+  "scale": 5
+ },
+ "layers": [
+  {
+   "id": "drawing",
+   "kind": "ink",
+   "src": "layer-ink.png",
+   "boil": true,
+   "origin": [
+    522,
+    816
+   ],
+   "track": {
+    "opacity": [
+     [
+      0,
+      0
+     ],
+     [
+      250,
+      1,
+      "linear"
+     ],
+     [
+      4700,
+      1
+     ],
+     [
+      5000,
+      0,
+      "linear"
+     ],
+     [
+      5400,
+      0
+     ]
+    ],
+    "y": [
+     [
+      0,
+      24
+     ],
+     [
+      600,
+      0,
+      "back"
+     ],
+     [
+      4700,
+      0
+     ],
+     [
+      5000,
+      16,
+      "in"
+     ],
+     [
+      5400,
+      24
+     ]
+    ],
+    "sy": [
+     [
+      0,
+      1
+     ],
+     [
+      700,
+      1
+     ],
+     [
+      1700,
+      1.018
+     ],
+     [
+      2700,
+      0.99
+     ],
+     [
+      3700,
+      1.018
+     ],
+     [
+      4500,
+      1
+     ],
+     [
+      5400,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "motifs",
+   "kind": "wash",
+   "src": "color-motifs.png",
+   "boil": true,
+   "origin": [
+    542,
+    514
+   ],
+   "float": {
+    "amp": 3,
+    "period": 1400,
+    "weight": [
+     [
+      0,
+      0
+     ],
+     [
+      1500,
+      0
+     ],
+     [
+      1900,
+      1
+     ],
+     [
+      4400,
+      1
+     ],
+     [
+      4700,
+      0
+     ]
+    ]
+   },
+   "track": {
+    "scale": [
+     [
+      0,
+      0
+     ],
+     [
+      1300,
+      0
+     ],
+     [
+      1750,
+      1,
+      "out"
+     ],
+     [
+      4400,
+      1
+     ],
+     [
+      4750,
+      0
+     ],
+     [
+      5400,
+      0
+     ]
+    ],
+    "rotate": [
+     [
+      0,
+      0
+     ]
+    ]
+   }
+  }
+ ]
+}
