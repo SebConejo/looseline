@@ -1,0 +1,23 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true
+  },
+  "what_it_shows": "Hand holding an old key",
+  "reasons": [
+    "The hand is confused: three fingers rise from the back of the hand, the index presses the key, and a closed loop between thumb and index forms an unexplained pocket shape.",
+    "A smile-like curve sits in the middle of the palm, reading as a stray face mark.",
+    "The tangle of finger contours looks awkward rather than drawn in one confident gesture."
+  ],
+  "judge": "references/judge.md, fresh agent",
+  "round": 2,
+  "date": "2026-11-07"
+}

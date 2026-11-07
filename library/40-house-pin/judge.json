@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": false,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true
+  },
+  "what_it_shows": "House with pin, people around",
+  "reasons": [
+    "The figure at bottom center is a floating head and shoulders with no body, unlike the three full-body walkers.",
+    "The four small figures differ in scale and style and are scattered like icons around a centred house and pin, which reads stiff and clip-art rather than elegant."
+  ],
+  "judge": "references/judge.md, fresh agent",
+  "round": 2,
+  "date": "2026-11-07"
+}

@@ -1,0 +1,5 @@
+{
+  "move": "motifs",
+  "command": "--add \"star@800,215,90;star@870,305,55;star@215,390,70\"",
+  "why": "Painted stars around the clipboard say the list is getting done; the generated wash was rejected because it filled both heads, which are open shapes no patch can keep white."
+}

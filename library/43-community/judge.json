@@ -1,0 +1,21 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": true,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true
+  },
+  "what_it_shows": "network of connected profile heads",
+  "reasons": [
+    "grace: the connecting lines tangle into a dense web that runs across the busts, the central figure especially, so the drawing reads cluttered rather than calm"
+  ],
+  "judge": "references/judge.md, fresh agent",
+  "round": 2,
+  "date": "2026-11-07"
+}

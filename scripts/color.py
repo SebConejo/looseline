@@ -1,6 +1,9 @@
 """Add real painted watercolor to an accepted ink drawing.
 
 usage:
+  python3 -I scripts/color.py DIR --from-source
+      the generated drawing already holds good watercolor: keep it as the color
+      version and write the ink-only version
   python3 -I scripts/color.py DIR --list
       writes DIR/regions.png: every closed region of the drawing, numbered
   python3 -I scripts/color.py DIR [--background] [--regions 6,7+8] [--add "staff@700,260,330,-10;note@860,330,90"]
@@ -110,6 +113,15 @@ def main():
     lab, sizes = label(~closed)
     border = set(np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))) - {0}
     keep = [i for i in range(1, len(sizes)) if i not in border and sizes[i] > 150]
+
+    if "--from-source" in sys.argv:
+        src = Image.open(f"{d}/source.jpg").convert("RGB")
+        src.save(f"{d}/version-color.jpg", quality=92)
+        base = Image.new("RGB", (W, H), PAPER)
+        base.paste(ink_img, (0, 0), ink_img)
+        base.save(f"{d}/version-ink.jpg", quality=92)
+        print(f"{d}: color version is the generated drawing itself")
+        return
 
     if "--list" in sys.argv:
         base = Image.new("RGB", (W, H), PAPER)

@@ -1,0 +1,22 @@
+{
+  "pass": false,
+  "answers": {
+    "idea": true,
+    "handmade": true,
+    "line": true,
+    "anatomy": true,
+    "characters": false,
+    "grace": false,
+    "space": true,
+    "color": true,
+    "poses": true
+  },
+  "what_it_shows": "House, map, route and pin",
+  "reasons": [
+    "The two people on the route are solid black pawn shapes with coral closed-eye curves, a game-token convention rather than adult editorial silhouettes.",
+    "The stray T-shaped mark on the map and the C inside the pin read as unexplained glyphs; the whole looks like a childish icon scene."
+  ],
+  "judge": "references/judge.md, fresh agent",
+  "round": 2,
+  "date": "2026-11-07"
+}
