@@ -5,7 +5,7 @@
     760
   ],
   "fps": 10,
-  "loop": 2800,
+  "loop": 3270,
   "still": 0,
   "boil": {
     "freq": 0.02,
@@ -19,7 +19,12 @@
         "frame1.png",
         "frame2.png",
         "frame3.png",
-        "frame4.png"
+        "frame4.png",
+        "frame5.png",
+        "frame6.png",
+        "frame7.png",
+        "frame8.png",
+        "frame9.png"
       ],
       "boil": true,
       "origin": [
@@ -36,15 +41,35 @@
           2
         ],
         [
-          1100,
+          1010,
           3
         ],
         [
-          1400,
+          1120,
           4
         ],
         [
-          2800,
+          1230,
+          5
+        ],
+        [
+          1340,
+          6
+        ],
+        [
+          1450,
+          7
+        ],
+        [
+          1560,
+          8
+        ],
+        [
+          1670,
+          9
+        ],
+        [
+          3270,
           1
         ]
       ],

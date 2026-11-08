@@ -55,6 +55,46 @@ def erase_borders(ink):
     return ink
 
 
+def bands(profile, want, min_gap):
+    """Split points of a 1-D ink profile: centres of the empty runs that cut it
+    into blocks. Falls back to equal parts when the gaps are not clear."""
+    n = len(profile)
+    empty = profile < 1
+    runs, start = [], None
+    for i, e in enumerate(empty):
+        if e and start is None:
+            start = i
+        if not e and start is not None:
+            if i - start >= min_gap and start > 0:
+                runs.append((start + i) // 2)
+            start = None
+    cuts = [0] + runs + [n]
+    blocks = [(cuts[i], cuts[i + 1]) for i in range(len(cuts) - 1)]
+    blocks = [b for b in blocks if profile[b[0]:b[1]].sum() > 0]
+    equal = [(i * n // want, (i + 1) * n // want) for i in range(want)]
+    if len(blocks) < want:
+        return equal
+    sizes = np.array([b[1] - b[0] for b in blocks], float)
+    if sizes.std() / sizes.mean() < 0.2:
+        return blocks
+    # irregular: a gap inside a panel; keep the gutters nearest the expected grid
+    if not runs:
+        return equal
+    cuts = [0] + [min(runs, key=lambda r: abs(r - k * n / want)) for k in range(1, want)] + [n]
+    return [(cuts[i], cuts[i + 1]) for i in range(want)]
+
+
+def panels(a, cols, rows):
+    """Panels in reading order, found from the empty gutters between them, so a
+    sheet with more or fewer panels than asked is still cut right."""
+    on = np.clip((215 - a[..., 0]) / 170, 0, 1) > 0.3
+    out = []
+    for y0, y1 in bands(on.sum(1), rows, 12):
+        for x0, x1 in bands(on[y0:y1].sum(0), cols, 12):
+            out.append((y0, y1, x0, x1))
+    return out
+
+
 def shift_of(ref, img):
     """Translation that moves img onto ref, from FFT cross-correlation."""
     f = np.fft.fft2(ref) * np.conj(np.fft.fft2(img))
@@ -86,23 +126,30 @@ def main():
     size = int(opt("--size", "760"))
     a = np.asarray(Image.open(src).convert("RGB")).astype(np.float32)
     H, W = a.shape[:2]
-    ch, cw = H // rows, W // cols
     cells = []
-    for r in range(rows):
-        for c in range(cols):
-            cell = a[r * ch:(r + 1) * ch, c * cw:(c + 1) * cw]
-            R, B = cell[..., 0], cell[..., 2]
-            ink = np.clip((215 - R) / 170, 0, 1)
-            ink[ink < 0.08] = 0
-            # the paper is not always neutral: measure its tint and paint above it
-            paper = np.median(R - B)
-            wash = np.clip((R - B - paper - 14) / 110, 0, 1) * (ink < 0.3)
-            wash[wash < 0.1] = 0
-            # a cell edge is never part of the drawing: blank a thin margin
-            m = 6
-            for layer in (ink, wash):
-                layer[:m], layer[-m:], layer[:, :m], layer[:, -m:] = 0, 0, 0, 0
-            cells.append([erase_borders(ink), wash])
+    for y0, y1, x0, x1 in panels(a, cols, rows):
+        cell = a[y0:y1, x0:x1]
+        R, B = cell[..., 0], cell[..., 2]
+        ink = np.clip((215 - R) / 170, 0, 1)
+        ink[ink < 0.08] = 0
+        # the paper is not always neutral: measure its tint and paint above it
+        paper = np.median(R - B)
+        wash = np.clip((R - B - paper - 14) / 110, 0, 1) * (ink < 0.3)
+        wash[wash < 0.1] = 0
+        # a cell edge is never part of the drawing: blank a thin margin
+        m = 6
+        for layer in (ink, wash):
+            layer[:m], layer[-m:], layer[:, :m], layer[:, -m:] = 0, 0, 0, 0
+        cells.append([erase_borders(ink), wash])
+    # every frame on one canvas size, the largest panel
+    ch, cw = max(c[0].shape[0] for c in cells), max(c[0].shape[1] for c in cells)
+    for c in cells:
+        for k in range(2):
+            pad = np.zeros((ch, cw), np.float32)
+            h, w = c[k].shape
+            pad[(ch - h) // 2:(ch - h) // 2 + h, (cw - w) // 2:(cw - w) // 2 + w] = c[k]
+            c[k] = pad
+    print(f"{len(cells)} panels found")
 
     small = lambda x: np.asarray(Image.fromarray((x * 255).astype(np.uint8)).resize((cw // 4, ch // 4), Image.BILINEAR)).astype(np.float32) / 255
     ref = small(cells[0][0])

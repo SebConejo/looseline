@@ -1,126 +1,124 @@
 [
  {
   "name": "chart-rises",
-  "grid": "2x2",
-  "subject": "A person in profile stands beside a big loose computer screen with a bar chart of three bars. Panel 1: no bars yet. Panel 2: bars low. Panel 3: bars higher. Panel 4: bars tall, the person raises one fist.",
-  "seq": "1:700,2:300,3:300,4:1800"
+  "grid": "3x3",
+  "subject": "A person in profile stands beside a big loose computer screen with a bar chart of three bars. Panel 1: no bars. Bars grow a little taller each panel. Panel 9: bars tall, the person raises one fist. Panels 2 to 8 are smooth in-betweens.",
+  "seq": "1:900,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:1600"
  },
  {
   "name": "coffee-ripples",
-  "grid": "2x2",
-  "subject": "A tiny person relaxes inside a big coffee cup, head, shoulders and one arm on the rim. Same pose in every panel; only small ripples on the coffee surface and two steam curls move and change shape from panel to panel.",
-  "seq": "1:250,2:250,3:250,4:250"
+  "grid": "3x3",
+  "subject": "A tiny person relaxes on the right side of a big coffee cup, head, shoulders and one arm on the rim, same place and pose in all nine panels. Only ripples on the coffee and two steam curls move a little from panel to panel.",
+  "seq": "1:110,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:110"
  },
  {
   "name": "page-turn",
-  "grid": "2x2",
-  "subject": "A person sits on a stack of books reading an open book, body still. Panel 1: book open flat. Panel 2: one page lifts. Panel 3: the page stands upright. Panel 4: the page lands on the other side.",
-  "seq": "1:1200,2:150,3:150,4:900"
+  "grid": "3x3",
+  "subject": "A person sits on a stack of books reading an open book, body still in every panel. Panel 1: book flat. Panels 2 to 8: one page lifts, stands upright at panel 5 and lands on the other side. Panel 9: book flat again.",
+  "seq": "1:1100,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:900"
  },
  {
   "name": "gift-give",
-  "grid": "2x2",
-  "subject": "A person in profile holds a small gift box with a bow; the box is in every panel. Panel 1: box against the chest. Panel 2: arms move forward. Panel 3: arms stretched out, offering the box. Panel 4: same, head tilted, small smile.",
-  "seq": "1:900,2:200,3:300,4:1400"
+  "grid": "3x3",
+  "subject": "A person in profile holds a small gift box with a bow, in every panel. Panel 1: box against the chest. The arms move forward a little more each panel. Panel 9: arms stretched out offering the box, small smile. Panels 2 to 8 are smooth in-betweens.",
+  "seq": "1:900,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:1600"
  },
  {
   "name": "laces-tie",
-  "grid": "2x2",
-  "subject": "Only a pair of sneakers on the ground, no person and no head. Panel 1: laces lying loose. Panel 2: laces crossed. Panel 3: one loop formed. Panel 4: a neat bow tied.",
-  "seq": "1:900,2:350,3:350,4:1500"
+  "grid": "3x3",
+  "subject": "Only a pair of sneakers on the ground, no person. Panel 1: laces loose. Panel 3: laces crossed. Panel 5: one loop. Panel 7: second loop. Panel 9: a neat bow tied. Smooth in-betweens.",
+  "seq": "1:700,2:150,3:300,4:150,5:300,6:150,7:300,8:150,9:1400"
  },
  {
   "name": "thinker",
-  "grid": "2x2",
-  "subject": "A person sits on a low block, seen in profile. Panel 1: upright, hands on knees. Panel 2: leans forward a little. Panel 3: one elbow on the knee. Panel 4: chin resting on the fist, deep in thought, like the famous thinker statue.",
-  "seq": "1:800,2:400,3:400,4:2200"
+  "grid": "3x3",
+  "subject": "A person sits on a low block in profile. Panel 1: upright, hands on knees. Leaning forward a little more each panel. Panel 9: elbow on the knee, chin on the fist, deep in thought like the thinker statue. Panels 2 to 8 are smooth in-betweens.",
+  "seq": "1:900,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:1600"
  },
  {
   "name": "run",
-  "grid": "3x2",
-  "aspect": "3:2",
-  "subject": "A person runs toward the right, leaning forward, in profile. Six panels of one run cycle on the same baseline: contact, down, passing, up, contact on the other leg, passing.",
-  "seq": "1:100,2:100,3:100,4:100,5:100,6:100"
+  "grid": "3x3",
+  "subject": "A person drawn in outline only, body never filled, runs toward the right in profile, leaning forward, on one baseline. Nine panels of one run cycle: legs and arms clearly alternate, one foot in the air, then the other, ending where it began.",
+  "seq": "1:110,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:110"
  },
  {
   "name": "door-open",
-  "grid": "2x2",
-  "subject": "A hand on a round knob of a plain door seen from the front, nobody else, line only. Panel 1: hand on the knob. Panel 2: knob turned. Panel 3: door opens a crack, the gap left white. Panel 4: door half open, the gap white, no black fill.",
-  "seq": "1:900,2:400,3:300,4:1500"
+  "grid": "3x3",
+  "subject": "Fixed camera. A tall plain door from the floor to above the head; beside it a whole person in profile, head to feet standing on the floor line, holding the round knob. Panel 1: door closed. The door swings open a little more each panel. Panel 9: wide open, the opening left white.",
+  "seq": "1:900,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:1600"
  },
  {
   "name": "camera-flash",
-  "grid": "2x2",
+  "grid": "3x3",
   "wash": true,
-  "subject": "A person in profile holds a camera to the eye, nobody else. Panel 1: aiming. Panel 2: finger presses the button. Panel 3: a burst of coral watercolor flash in front of the camera. Panel 4: aiming again. Coral only on the flash.",
-  "seq": "1:1200,2:200,3:200,4:1000"
+  "subject": "A person in profile holds a camera to the eye, nobody else. Panels 1 to 3: aiming, still. Panel 4: finger presses. Panels 5 to 7: a coral watercolor flash burst in front of the camera grows then fades. Panels 8 and 9: aiming again. Coral only on the flash.",
+  "seq": "1:300,2:200,3:400,4:150,5:100,6:100,7:150,8:200,9:500"
  },
  {
   "name": "sofa-typing",
-  "grid": "2x2",
-  "subject": "Close-up of two hands typing on a laptop keyboard resting on knees, outline only. Same framing; only the fingers change. Panel 1: left fingers down. Panel 2: right fingers down. Panel 3: left index down. Panel 4: both hands lifted.",
-  "seq": "1:150,2:150,3:150,1:150,2:150,4:700"
+  "grid": "3x3",
+  "subject": "Close-up of two hands typing on a laptop keyboard resting on knees, outline only. Same framing in all nine panels; only the fingers move, a different finger pressing a key in each panel, like fast typing.",
+  "seq": "1:110,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:110"
  },
  {
   "name": "accordion",
-  "grid": "2x2",
-  "subject": "A standing person in profile plays an accordion. Panel 1: bellows closed. Panel 2: bellows half open. Panel 3: bellows wide open, head tilted back. Panel 4: bellows half open.",
-  "seq": "1:300,2:200,3:400,4:200"
+  "grid": "3x3",
+  "subject": "A standing person in profile plays an accordion. Nine panels of one cycle: bellows closed, opening wider each panel to wide open at panel 5 with the head tilted back, then closing again by panel 9.",
+  "seq": "1:110,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:110"
  },
  {
   "name": "yoga",
-  "grid": "2x2",
-  "subject": "A person drawn in outline only, body never filled black, does yoga on a mat. Panel 1: standing, palms together. Panel 2: arms raised high. Panel 3: tree pose, one foot against the other knee. Panel 4: warrior pose, arms wide.",
-  "seq": "1:900,2:600,3:1200,4:1200"
+  "grid": "3x3",
+  "subject": "A person drawn in outline only, never filled, does yoga on a mat. Panel 1: standing, palms together. Panel 3: arms raised high. Panel 5: tree pose. Panel 7: arms opening. Panel 9: warrior pose, arms wide. Smooth in-betweens.",
+  "seq": "1:700,2:110,3:600,4:110,5:900,6:110,7:300,8:110,9:1400"
  },
  {
   "name": "suitcase-run",
-  "grid": "3x2",
-  "aspect": "3:2",
-  "subject": "A person runs toward the right pulling a rolling suitcase behind. Six panels of one run cycle on the same baseline: contact, down, passing, up, contact on the other leg, passing. Suitcase bounces slightly.",
-  "seq": "1:100,2:100,3:100,4:100,5:100,6:100"
+  "grid": "3x3",
+  "subject": "A person drawn in outline only runs toward the right pulling a rolling suitcase. Nine panels of one run cycle on one baseline: legs clearly alternate, back foot pushing, front foot reaching, arms swinging, the suitcase bouncing.",
+  "seq": "1:110,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:110"
  },
  {
   "name": "envelope-open",
-  "grid": "2x2",
-  "subject": "Two hands drawn in outline only, never filled, hold an envelope. Panel 1: closed. Panel 2: the flap opens. Panel 3: a letter marked with a big @ slides half out. Panel 4: the letter fully out above the envelope.",
-  "seq": "1:900,2:300,3:300,4:1600"
+  "grid": "3x3",
+  "subject": "Two hands drawn in outline only hold an envelope, nobody else. Panel 1: closed. Panels 2 to 4: the flap lifts. Panels 5 to 8: a letter marked with a big @ slides out a little more each panel. Panel 9: the letter fully out.",
+  "seq": "1:900,2:110,3:110,4:110,5:110,6:110,7:1600"
  },
  {
   "name": "checklist-tick",
-  "grid": "2x2",
-  "subject": "A sheet with three wavy lines, each with an empty box, and a pen. Panel 1: boxes empty. Panel 2: first box ticked. Panel 3: second ticked. Panel 4: third ticked, pen lifted.",
-  "seq": "1:800,2:500,3:500,4:1600"
+  "grid": "3x3",
+  "subject": "A sheet with three wavy lines, each with a box, and a hand holding a pen. A tick once drawn stays in every later panel. Panel 1: all empty. Panel 3: first box ticked. Panel 6: second ticked too. Panel 8: all three ticked. Panel 9: pen lifted. Smooth in-betweens.",
+  "seq": "1:700,2:110,3:400,4:110,5:110,6:400,7:110,8:400,9:1400"
  },
  {
   "name": "snow-globe",
-  "grid": "2x2",
-  "subject": "A snow globe on a simple base, a small mountain inside. Same globe in every panel; small snowflake dots fall inside, lower and in new places in each panel.",
-  "seq": "1:250,2:250,3:250,4:250"
+  "grid": "3x3",
+  "subject": "Only a snow globe on a simple base with a small mountain inside, no person. Same globe in all nine panels; small snowflake dots fall slowly, a little lower each panel, new ones appearing at the top.",
+  "seq": "1:110,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:110"
  },
  {
   "name": "card-pay",
-  "grid": "2x2",
-  "subject": "A hand holds a bank card above a small loose payment terminal. Panel 1: card above. Panel 2: card touches the terminal. Panel 3: three dots on its small screen. Panel 4: a big check mark on the screen, card lifted.",
-  "seq": "1:700,2:500,3:600,4:1600"
+  "grid": "3x3",
+  "subject": "A hand holds a bank card above a small loose payment terminal. Panel 1: card high above. Panel 4: card touches the terminal. Panels 5 to 7: one, two, three dots appear on its small screen. Panel 9: a big check mark on the screen, card lifted. Smooth in-betweens.",
+  "seq": "1:700,2:110,3:110,4:300,5:250,6:250,7:250,8:110,9:1500"
  },
  {
   "name": "coffee-sip",
-  "grid": "2x2",
-  "subject": "A person in profile sits at a desk typing on a laptop, a coffee cup beside. Panel 1: typing. Panel 2: hand reaches the cup. Panel 3: lifts the cup to the mouth and sips. Panel 4: puts the cup down.",
-  "seq": "1:1200,2:300,3:1400,4:300"
+  "grid": "3x3",
+  "subject": "A person in profile sits at a desk with a laptop, a coffee cup beside. Panel 1: typing. Panel 3: hand on the cup. Panel 5: cup at the mouth, sipping. Panel 7: cup back on the desk. Panel 9: typing again. Other panels are smooth in-betweens.",
+  "seq": "1:1000,2:110,3:110,4:110,5:900,6:110,7:110,8:110,9:700"
  },
  {
   "name": "fever",
-  "grid": "2x2",
+  "grid": "3x3",
   "wash": true,
-  "subject": "A person in profile holds a phone to the ear, looking tired; a big loose thermometer stands beside. Coral watercolor only inside the thermometer. Panel 1: low level. Panel 2: a third. Panel 3: two thirds. Panel 4: full, head droops a little.",
-  "seq": "1:700,2:500,3:500,4:1600"
+  "subject": "A person in profile holds a phone to the ear, tired; a big loose thermometer beside. Coral watercolor only inside the thermometer, a little higher each panel: panel 1 empty bulb, panel 9 full, head drooping a little. Panels 2 to 8 are smooth in-betweens.",
+  "seq": "1:900,2:110,3:110,4:110,5:110,6:110,7:110,8:110,9:1600"
  },
  {
   "name": "binoculars",
-  "grid": "2x2",
-  "subject": "A person in profile looks far away through binoculars. Panel 1: binoculars at the eyes. Panel 2: lowers the binoculars a little, eye open. Panel 3: same, eye closed in a blink. Panel 4: eye open, raising the binoculars back.",
-  "seq": "1:1400,2:600,3:150,2:900,4:300"
+  "grid": "3x3",
+  "subject": "A person in profile holds binoculars in both hands in every panel; they never vanish. Panel 1: binoculars at the eyes. Panels 2 to 4: lowering them. Panel 5: at the chest, eye open. Panel 6: eye closed, a blink. Panel 7: eye open. Panels 8 and 9: raising them back.",
+  "seq": "1:900,2:110,3:110,4:110,5:500,6:150,7:400,8:110,9:900"
  }
 ]
