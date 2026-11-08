@@ -16,11 +16,12 @@ const scene = opt("--subject");
 const states = opt("--states");
 const out = opt("--out");
 if (!scene || !states || !out) {
-  console.error(`usage: node scripts/make.mjs --subject "scene" --states "start | middle | end" --out DIR [--wash] [--ms 250] [--tries 3]
+  console.error(`usage: node scripts/make.mjs --subject "scene" --states "start | middle | end" --out DIR [--style line|marker] [--wash] [--ms 250] [--tries 3]
 
 --subject   the scene, what stays the same in the three drawings
 --states    the three situations, separated by |: 1 the rest state, 2 halfway,
             3 the full action. The animation plays 1, 2, 3, 2 and loops.
+--style     line (default: few brush lines on terracotta) or marker (felt-tip on paper)
 --ms        how long each drawing shows (default 250, so one cycle is one second)
 
 Writes DIR/sheet.jpg (the three drawings from the generator), DIR/frame1-3.png,
@@ -43,18 +44,23 @@ const run = (cmd, argv) =>
     c.on("close", (code) => done({ code, o }));
   });
 
-const subject = `${scene} Panel 1: ${s1}. Panel 2: ${s2}. Panel 3: ${s3}. Everything else identical in the three panels.`;
+const style = opt("--style", "line");
+const subject = style === "line"
+  ? `${scene} Panel 1: ${s1}. Panel 2: ${s2}. Panel 3: ${s3}.`
+  : `${scene} Panel 1: ${s1}. Panel 2: ${s2}. Panel 3: ${s3}. Everything else identical in the three panels.`;
 let ok = false;
 for (let t = 1; t <= tries && !ok; t++) {
   const sheet = join(out, "sheet.jpg");
   if (existsSync(sheet)) renameSync(sheet, join(out, `sheet-rejected-${Date.now()}.jpg`));
-  const g = await run("node", ["scripts/generate.mjs", "--kind", "frames", "--grid", "3x1", "--aspect", "16:9", "--out", sheet, "--subject", subject, ...(args.includes("--wash") ? ["--wash"] : [])]);
+  const g = await run("node", ["scripts/generate.mjs", "--kind", "frames", "--grid", "3x1", "--aspect", "16:9", "--out", sheet, "--subject", subject, "--style", style, ...(args.includes("--wash") ? ["--wash"] : [])]);
   if (g.code) {
     console.log(`try ${t}: generation failed: ${g.o.trim().slice(0, 200)}`);
     if (/characters/.test(g.o)) break;  // prompt too long: retrying cannot help
     continue;
   }
-  const c = await run("python3", ["-I", "scripts/frames.py", sheet, join(out, "frame"), "--grid", "3x1"]);
+  const c = style === "line"
+    ? await run("python3", ["-I", "scripts/flat_frames.py", sheet, join(out, "frame")])
+    : await run("python3", ["-I", "scripts/frames.py", sheet, join(out, "frame"), "--grid", "3x1"]);
   const count = Number((c.o.match(/count: (\d+)/) || [])[1] || 0);
   const filled = /FILLED/.test(c.o);
   const boxed = /BOXED/.test(c.o);

@@ -1,6 +1,6 @@
 ---
 name: ink
-description: Make hand-drawn editorial illustrations and icons (thick black felt-tip line, simplified symbolic shapes, bald adult characters in profile, occasional coral watercolor), each delivered in two versions, a still drawing and a looping animation of three key drawings played 1, 2, 3, 2. Use whenever someone wants an illustration, an icon, a spot illustration for a website, a hand-drawn, sketchy, "Anthropic-style" or "Icons8 Ouch-style" drawing, a doodle-style explainer, or an animated drawing, even if they never say "ink". Produces still.png and a standalone HTML page per drawing.
+description: Make hand-drawn editorial illustrations and icons in a loose brush-line style (few thick black lines, playful disproportion, giant hands, tiny heads, flat off-white paper cutouts on a terracotta background), each delivered in two versions, a still image and a looping animation of three key drawings played 1, 2, 3, 2. Use whenever someone wants an illustration, an icon, a spot illustration for a website, a hand-drawn, sketchy or doodle-style drawing, an explainer drawing, or an animated drawing, even if they never say "ink". Produces still.png and a standalone HTML page per drawing.
 license: MIT
 compatibility: Needs the Composio CLI signed in with a Gemini connection (image generation), Node.js 20+, Python 3 with Pillow and numpy, and Chrome or Chromium for the checks.
 ---
@@ -15,16 +15,18 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
 
 ## Workflow
 
-0. **Default: two versions of every drawing, the normal one and the animated one.** Unless the person asks for something else, describe the scene and three situations of the same action, then run:
+0. **Default: two versions of every drawing, the normal one and the animated one, in the line style.** Read `references/line-style.md` first. Unless the person asks for something else, describe the scene and three situations of the same action, then run:
 
    ```
-   node scripts/make.mjs --subject "A person in profile sits at a desk with a laptop and a paper coffee cup." \
-     --states "hand resting on the cup | the cup lifted halfway | the cup at the mouth, sipping" --out work/coffee
+   node scripts/make.mjs --subject "A giant black-line hand holds out a small off-white gift box toward the right; a tiny calm head on the left." \
+     --states "the hand close to the face | the hand halfway out | the arm fully stretched out" --out work/gift
    ```
 
-   It generates the three key drawings on one sheet, cuts and aligns them, rejects a sheet with a black fill or a frame around the drawing (up to 3 tries), and writes `still.png` (the normal version: drawing 1) and `anim.html` (the animated version). The animation plays the drawings **1, 2, 3, 2** and loops, 250 ms each: the motion goes and comes back, so the loop never jumps. Situation 1 is the rest state, 2 is exactly halfway, 3 is the full action. Read the three frames before delivering. `library/anim/` holds 19 examples (`index.html` shows both versions side by side, `jobs.json` the subjects and situations, `all.mjs` regenerates them).
+   It generates the three key drawings on one sheet, cuts the terracotta panels and aligns them, rejects a sheet with a frame around a panel (up to 3 tries), and writes `still.png` (the normal version: drawing 1) and `anim.html` (the animated version). The animation plays the drawings **1, 2, 3, 2** and loops, 250 ms each: the motion goes and comes back, so the loop never jumps. Situation 1 is the rest state, 2 is exactly halfway, 3 is the full action; keep the motion small. Write only what must be drawn: a subject of hands or objects says "no head, face or person", or the generator adds one. Read the three frames before delivering (`references/line-style.md`, last section) and generate again when one fails. `library/anim/` holds 20 examples (`index.html` shows both versions side by side, `jobs.json` the subjects and situations, `all.mjs NAME` regenerates one).
 
-   The steps below are for anything more: watercolor staging, longer stories, pose sheets.
+   `--style marker` gives the older style: felt-tip marker on off-white paper with optional coral watercolor (`references/style.md`).
+
+   The steps below are for the marker style and anything more: watercolor staging, longer stories, pose sheets.
 
 1. **One idea, one small story.**2. **Decide the moving parts** (`references/motion.md`, section 2):
    - a character that changes pose needs **one pose sheet** with every pose;
@@ -56,7 +58,8 @@ Each folder holds the source image, the layers, `scene.json` and the built page.
 
 ## References
 
-- `references/style.md`: the style, what was rejected, and the judge questions. Read it before generating.
+- `references/line-style.md`: the default line style, its rules and what was rejected. Read it before generating.
+- `references/style.md`: the older marker style, what was rejected, and the judge questions.
 - `references/judge.md`: the brief given to the fresh judge agent, calibrated on the owner's own verdicts.
 - `references/motion.md`: what a good animation is, where moving parts come from, the scene file and the page modes.
 

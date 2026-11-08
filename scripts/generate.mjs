@@ -7,6 +7,10 @@ const STYLE =
 // Frame sheets need room for one line per panel, so they use a shorter style.
 const STYLE_SHORT =
   "Loose hand-drawn editorial sketch, one thick black felt-tip marker line, thick-thin, blunt ends, slightly wobbly, few lines, no fine detail. Draw only what is described. People: bald adults in profile, nose in the contour, closed-eye curve, dressed: one stroke at neckline, sleeve ends and trouser hems, nothing else on clothes; never a round smiley head. Line only: never fill a shape with black. Off-white paper. No words, icons, shading or frame.";
+// The default style since 2026-11-08: few loose brush lines, playful
+// disproportion, flat off-white cutouts on a flat terracotta background.
+const STYLE_LINE =
+  "Style: few thick black brush-pen lines, wobbly, rounded ends, like loose string; open shapes, no messy loops. Bodies: black line only, never filled; big hands, tiny head, short legs. Detail follows zoom: a whole body keeps face, hands, feet simple (closed-eye curve, small plain hands) and every arm ends in a hand; finger loops only in hand close-ups. Legs: two separate strokes, nothing between. Objects: flat off-white paper cutouts, no outline, few black lines. Flat terracotta background (#C96F53); no frame, shading, texture, words or clothes. Add no unlisted person, head or animal.";
 const WASH = " Coral watercolor (#F5A39B) only where asked: loose, translucent, paper grain.";
 const NO_WASH = " No color at all, black ink only.";
 
@@ -18,13 +22,15 @@ const opt = (name, fallback) => {
 const subject = opt("--subject");
 const out = opt("--out");
 if (!subject || !out) {
-  console.error(`usage: node scripts/generate.mjs --subject "..." --out drawing.jpg [--kind single|poses|frames] [--grid 2x2] [--size 1K|2K] [--poses 4] [--wash] [--aspect 1:1|16:9] [--model gemini-3-pro-image-preview]
+  console.error(`usage: node scripts/generate.mjs --subject "..." --out drawing.jpg [--kind single|poses|frames] [--grid 2x2] [--size 1K|2K] [--poses 4] [--wash] [--aspect 1:1|16:9] [--model gemini-3-pro-image-preview] [--style line|marker]
 
 --kind single   one drawing, subject centred, about 55% of the canvas
 --kind poses    one pose sheet: the SAME character drawn --poses times in a row on one baseline; describe each pose in --subject
 --kind frames   one frame sheet: the SAME drawing in a --grid 2x2 of panels, only the moving part changes; describe each panel in --subject (2K by default)
 --dry           print the prompt and its length, generate nothing
---wash          allow coral watercolor where the subject asks for it (otherwise black ink only)`);
+--style line    the default: few brush lines, disproportion, off-white cutouts on terracotta
+--style marker  the older style: felt-tip marker on off-white paper, optional coral watercolor
+--wash          marker style only: allow coral watercolor where the subject asks for it (otherwise black ink only)`);
   process.exit(2);
 }
 const kind = opt("--kind", "single");
@@ -41,7 +47,13 @@ const heads = {
   single: "Subject centred, about 55% of the canvas. ",
 };
 const head = heads[kind] || heads.single;
-const prompt = head + subject + " " + (kind === "frames" ? STYLE_SHORT : STYLE) + (args.includes("--wash") ? WASH : NO_WASH);
+const style = opt("--style", "line");
+const lineHeads = {
+  frames: `Three square panels on white, wide gutters, identical framing; only the moving part changes, slightly. `,
+  poses: `One wide terracotta panel: the SAME character drawn ${count} times in a row, same size, same baseline. `,
+  single: "One square terracotta panel, subject centred. ",
+};
+const prompt = style === "line" ? (lineHeads[kind] || lineHeads.single) + STYLE_LINE + " Scene: " + subject : head + subject + " " + (kind === "frames" ? STYLE_SHORT : STYLE) + (args.includes("--wash") ? WASH : NO_WASH);
 if (prompt.length > 1000) {
   console.error(`prompt is ${prompt.length} characters; the managed Gemini connection takes 1000 at most. Shorten --subject by ${prompt.length - 1000}.`);
   process.exit(2);
