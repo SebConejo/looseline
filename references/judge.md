@@ -24,7 +24,7 @@ Rejected:
 - A man sitting on a gear lettered "AI" (stock-photo symbol).
 - A person at a desk examining detailed papers with a house picture and many lines (too detailed).
 
-The line between the two lists: accepted drawings have flowing contours that a hand drew in one gesture, few elements and no clothing detail; rejected ones are assembled from geometric primitives or emoji conventions, or carry too much precise detail.
+The line between the two lists: accepted drawings have flowing contours that a hand drew in one gesture, few elements and clothes suggested by a stroke at the neckline, sleeves and hems only; rejected ones are assembled from geometric primitives or emoji conventions, or carry too much precise detail.
 
 ## Questions
 
@@ -37,7 +37,7 @@ The line between the two lists: accepted drawings have flowing contours that a h
 7. **space**: Is there calm empty space around the subject, with nothing cut by the edge unless clearly on purpose?
 8. **color**: Is the only color a sparing, painted-looking coral watercolor (or none at all)?
 9. **poses**: If the image shows the same character several times (a pose sheet), is it clearly the same character, same size, same baseline, with space between the poses? Answer yes if it is not a pose sheet.
-10. **simple**: Are there few elements and no fine detail: no crowded screen or interface, no detailed document, no clothing detail (suits, collars, ties, buttons, pockets), no hair? Answer no if any of these appears.
+10. **simple**: Are there few elements and no fine detail: no crowded screen or interface, no detailed document, no clothing detail beyond the neckline, sleeve and hem strokes (no suits, ties, buttons, pockets), no hair? Answer no as well if a person looks naked: a full body with no stroke at the neckline, sleeves or hems. Answer no if any of these appears.
 11. **loose**: Are objects drawn loosely by hand, rather than precise and technical (a perfect calculator, a perfect gear), and is there no written "AI" or company logo?
 
 ## Verdict

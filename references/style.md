@@ -46,7 +46,7 @@ Two parts that touch along a length (pressed fingers, an arm against the body, l
 
 - Adult editorial silhouettes in profile or three-quarter view.
 - Small head; the nose is part of the contour; a closed eye is a short curve; at most a mouth line.
-- One flowing contour; simplified hands; no anatomy, no hair. **Clothes are suggested, never drawn**: no suits, collars, ties, buttons or pockets. A bare silhouette reads as dressed (accepted: the people around the checklist; rejected: suits in the exchange and snow-globe scenes).
+- One flowing contour; simplified hands; no anatomy, no hair. **Clothes are suggested with a few strokes**: one short stroke at the neckline, one at each sleeve end and one at each trouser hem when the legs show. Without them a full body reads as naked (rejected: the person opening the door, 2026-11-08). Nothing else: no suits, ties, buttons or pockets (rejected: suits in the exchange and snow-globe scenes).
 - **Never a round smiley head with dot eyes and a smile arc.** It reads as a children's emoji (rejected).
 - Gestures carry the meaning and may be exaggerated.
 

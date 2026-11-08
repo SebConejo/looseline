@@ -1,99 +1,99 @@
 [
- {
-  "name": "coffee-sip",
-  "subject": "A person in profile sits at a desk with a laptop and a paper coffee cup.",
-  "states": "hand resting on the cup on the desk | the cup lifted halfway to the mouth | the cup at the mouth, sipping"
- },
- {
-  "name": "door-open",
-  "subject": "A tall door from the floor to above the head; beside it a person in outline only, bare legs, feet on the floor line, hand on the knob.",
-  "states": "door closed | door half open toward the viewer | door wide open toward the viewer, its edge seen, the doorway white"
- },
- {
-  "name": "fever",
-  "wash": true,
-  "subject": "A tired person in profile holds a phone to the ear; a big loose thermometer beside, coral watercolor inside. No frame.",
-  "states": "thermometer low, head up | thermometer half full | thermometer full, head drooping"
- },
- {
-  "name": "chart-rises",
-  "subject": "A person in profile stands beside a big loose screen showing a bar chart of three bars.",
-  "states": "bars very low, arms down | bars halfway | bars tall, the person raises one fist"
- },
- {
-  "name": "page-turn",
-  "subject": "A person drawn in outline only sits on a stack of books reading an open book, body still.",
-  "states": "book open flat | one page lifted upright | the page landing on the other side"
- },
- {
-  "name": "gift-give",
-  "subject": "A person in profile holds a small gift box with a bow.",
-  "states": "box held against the chest | arms halfway forward | arms stretched out offering the box, small smile"
- },
- {
-  "name": "laces-tie",
-  "subject": "Only a pair of sneakers, floating on plain paper. No person, no floor, no shelf, no frame.",
-  "states": "laces lying loose | laces crossed | laces tied in a neat bow"
- },
- {
-  "name": "thinker",
-  "subject": "A person drawn in outline only sits on a low block in profile.",
-  "states": "upright, hands on the knees | leaning forward, elbow toward the knee | elbow on the knee, chin on the fist, deep in thought"
- },
- {
-  "name": "binoculars",
-  "subject": "A person in profile holds binoculars in both hands.",
-  "states": "binoculars at the chest, eye open | binoculars halfway up | binoculars at the eyes"
- },
- {
-  "name": "run",
-  "subject": "A person drawn in outline only runs toward the right in profile on a floor line.",
-  "states": "left leg forward, right arm forward | legs passing under the body | right leg forward, left arm forward"
- },
- {
-  "name": "camera-flash",
-  "wash": true,
-  "subject": "A person in profile holds a camera to the eye. One single flash only, in front of the lens, nothing above.",
-  "states": "aiming, no flash | a small coral watercolor flash in front of the camera | a big coral watercolor flash burst"
- },
- {
-  "name": "sofa-typing",
-  "subject": "A person in profile sits on a simple sofa, a laptop on the knees, typing. Nothing else, no frame.",
-  "states": "both hands resting on the keys | left hand pressing keys, right hand lifted | right hand pressing keys, left hand lifted"
- },
- {
-  "name": "accordion",
-  "subject": "A standing person in profile plays an accordion.",
-  "states": "bellows closed | bellows half open | bellows wide open, head tilted back"
- },
- {
-  "name": "yoga",
-  "subject": "A person drawn in outline only, never filled, stands on a mat.",
-  "states": "palms together at the chest | arms rising above the shoulders | arms high above the head, one foot on the other knee"
- },
- {
-  "name": "suitcase-run",
-  "subject": "A person drawn in outline only runs toward the right pulling a rolling suitcase on a floor line.",
-  "states": "left leg forward | legs passing under the body | right leg forward"
- },
- {
-  "name": "envelope-open",
-  "subject": "Two hands in outline only hold an envelope, nobody else.",
-  "states": "envelope closed | flap open, a letter peeking out | a letter marked with a big @ pulled halfway out"
- },
- {
-  "name": "checklist-tick",
-  "subject": "A sheet with three wavy lines, each with a box, and a hand holding a pen, nobody else.",
-  "states": "all boxes empty | first box ticked | first and second boxes ticked"
- },
- {
-  "name": "snow-globe",
-  "subject": "Only a snow globe on a simple base with a small mountain inside. No person, no frame, no box around it.",
-  "states": "snowflake dots near the top | snowflake dots in the middle | snowflake dots near the bottom"
- },
- {
-  "name": "card-pay",
-  "subject": "A hand holds a bank card above a small loose payment terminal, nobody else.",
-  "states": "card high above the terminal | card touching the terminal, dots on its screen | a big check mark on the screen"
- }
+  {
+    "name": "coffee-sip",
+    "subject": "A person in profile sits at a desk with a laptop and a paper coffee cup.",
+    "states": "hand resting on the cup on the desk | the cup lifted halfway to the mouth | the cup at the mouth, sipping"
+  },
+  {
+    "name": "door-open",
+    "subject": "A tall door from the floor to above the head; beside it a person in outline only, in trousers, feet on the floor line, hand on the knob.",
+    "states": "door closed | door half open toward the viewer | door wide open toward the viewer, its edge seen, the doorway white"
+  },
+  {
+    "name": "fever",
+    "wash": true,
+    "subject": "A tired person in profile holds a phone to the ear; a big loose thermometer beside, coral watercolor inside. No frame.",
+    "states": "thermometer low, head up | thermometer half full | thermometer full, head drooping"
+  },
+  {
+    "name": "chart-rises",
+    "subject": "A person in profile stands beside a big loose screen showing a bar chart of three bars.",
+    "states": "bars very low, arms down | bars halfway | bars tall, the person raises one fist"
+  },
+  {
+    "name": "page-turn",
+    "subject": "A person drawn in outline only sits on a stack of books reading an open book, body still.",
+    "states": "book open flat | one page lifted upright | the page landing on the other side"
+  },
+  {
+    "name": "gift-give",
+    "subject": "A person in profile holds a small gift box with a bow.",
+    "states": "box held against the chest | arms halfway forward | arms stretched out offering the box, small smile"
+  },
+  {
+    "name": "laces-tie",
+    "subject": "Only a pair of sneakers, floating on plain paper. No person, no floor, no shelf, no frame.",
+    "states": "laces lying loose | laces crossed | laces tied in a neat bow"
+  },
+  {
+    "name": "thinker",
+    "subject": "A person drawn in outline only sits on a low block in profile.",
+    "states": "upright, hands on the knees | leaning forward, elbow toward the knee | elbow on the knee, chin on the fist, deep in thought"
+  },
+  {
+    "name": "binoculars",
+    "subject": "A person in profile holds binoculars in both hands.",
+    "states": "binoculars at the chest, eye open | binoculars halfway up | binoculars at the eyes"
+  },
+  {
+    "name": "run",
+    "subject": "A person drawn in outline only runs toward the right in profile on a floor line.",
+    "states": "left leg forward, right arm forward | legs passing under the body | right leg forward, left arm forward"
+  },
+  {
+    "name": "camera-flash",
+    "wash": true,
+    "subject": "A person in profile holds a camera to the eye. One single flash only, in front of the lens, nothing above.",
+    "states": "aiming, no flash | a small coral watercolor flash in front of the camera | a big coral watercolor flash burst"
+  },
+  {
+    "name": "sofa-typing",
+    "subject": "A person in profile sits on a simple sofa, a laptop on the knees, typing. Nothing else, no frame.",
+    "states": "both hands resting on the keys | left hand pressing keys, right hand lifted | right hand pressing keys, left hand lifted"
+  },
+  {
+    "name": "accordion",
+    "subject": "A standing person in profile plays an accordion.",
+    "states": "bellows closed | bellows half open | bellows wide open, head tilted back"
+  },
+  {
+    "name": "yoga",
+    "subject": "A person in a long-sleeve top and leggings, drawn in outline only, never filled, stands on a mat.",
+    "states": "palms together at the chest | arms rising above the shoulders | arms high above the head, one foot on the other knee"
+  },
+  {
+    "name": "suitcase-run",
+    "subject": "A person drawn in outline only runs toward the right pulling a rolling suitcase on a floor line.",
+    "states": "left leg forward | legs passing under the body | right leg forward"
+  },
+  {
+    "name": "envelope-open",
+    "subject": "Two hands in outline only hold an envelope, nobody else.",
+    "states": "envelope closed | flap open, a letter peeking out | a letter marked with a big @ pulled halfway out"
+  },
+  {
+    "name": "checklist-tick",
+    "subject": "A sheet with three wavy lines, each with a box, and a hand holding a pen, nobody else.",
+    "states": "all boxes empty | first box ticked | first and second boxes ticked"
+  },
+  {
+    "name": "snow-globe",
+    "subject": "Only a snow globe on a simple base with a small mountain inside. No person, no frame, no box around it.",
+    "states": "snowflake dots near the top | snowflake dots in the middle | snowflake dots near the bottom"
+  },
+  {
+    "name": "card-pay",
+    "subject": "A hand holds a bank card above a small loose payment terminal, nobody else.",
+    "states": "card high above the terminal | card touching the terminal, dots on its screen | a big check mark on the screen"
+  }
 ]
