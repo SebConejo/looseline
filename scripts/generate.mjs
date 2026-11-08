@@ -6,7 +6,7 @@ const STYLE =
   "Loose hand-drawn editorial sketch with one thick black felt-tip marker line (#1B1B1A): thick-thin, blunt ends, slightly wobbly and imperfect, few lines, no fine detail. Draw only what is described: no extra people, heads or objects. People are bald adult silhouettes in profile or three-quarter view, nose in the contour, a closed-eye curve, bodies suggested without any clothing detail (no collars, ties, buttons, pockets, hair); never a round smiley head. Objects simplified and imperfect, never precise or technical. Plain off-white background (#FAF9F6), lots of empty space. No words or letters, no icons, no shading, no gradient, no frame.";
 // Frame sheets need room for one line per panel, so they use a shorter style.
 const STYLE_SHORT =
-  "Loose hand-drawn editorial sketch, one thick black felt-tip marker line (#1B1B1A), thick-thin, blunt ends, slightly wobbly, few lines, no fine detail. Draw only what is described. People: bald adult silhouettes in profile, nose in the contour, closed-eye curve, no clothing detail, never a round smiley head. Objects loose and imperfect. Off-white background (#FAF9F6). No words, icons, shading or frame.";
+  "Loose hand-drawn editorial sketch, one thick black felt-tip marker line (#1B1B1A), thick-thin, blunt ends, slightly wobbly, few lines, no fine detail. Draw only what is described. People: bald adult silhouettes in profile, nose in the contour, closed-eye curve, no clothing detail, never a round smiley head. Line only: never fill a body or shape with black. Off-white background (#FAF9F6). No words, icons, shading or frame.";
 const WASH = " Coral watercolor (#F5A39B) only where asked: loose, translucent, paper grain.";
 const NO_WASH = " No color at all, black ink only.";
 
@@ -32,7 +32,7 @@ const count = opt("--poses", "4");
 const grid = opt("--grid", "2x2");
 const heads = {
   poses: `Animation pose sheet: the SAME character drawn ${count} times in a row, evenly spaced, same size, same baseline, no overlap between poses. `,
-  frames: `Animation frame sheet: the SAME drawing in a ${grid} grid of equal panels (left to right, top to bottom), wide margins, no borders or numbers. Identical framing, size and position in every panel; only the moving part changes. `,
+  frames: `Animation frame sheet: the SAME drawing in a ${grid} grid of equal panels (left to right, top to bottom), wide margins, no borders or numbers. Identical framing in every panel. The action advances evenly: each panel one small step further than the previous, no two panels alike, no pauses, no jumps. `,
   single: "Subject centred, about 55% of the canvas. ",
 };
 const head = heads[kind] || heads.single;

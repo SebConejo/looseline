@@ -52,6 +52,16 @@ def erase_borders(ink):
         near = ys.start < 0.15 * h or ys.stop > 0.85 * h or xs.start < 0.15 * w or xs.stop > 0.85 * w
         if (flat or tall) and near:
             ink[lab == i] = 0
+            continue
+        # a box or corner of a panel border: touches the cell edge and its ink
+        # lies along the rim of its own bounding box
+        touches = ys.start < 10 or xs.start < 10 or ys.stop > h - 10 or xs.stop > w - 10
+        if touches and bh > 0.3 * h and bw > 0.3 * w:
+            comp = lab[sl] == i
+            yy, xx = np.nonzero(comp)
+            rim = (yy < 30) | (yy > bh - 30) | (xx < 30) | (xx > bw - 30)
+            if rim.mean() > 0.8:
+                ink[lab == i] = 0
     return ink
 
 
@@ -72,11 +82,13 @@ def bands(profile, want, min_gap):
     blocks = [(cuts[i], cuts[i + 1]) for i in range(len(cuts) - 1)]
     blocks = [b for b in blocks if profile[b[0]:b[1]].sum() > 0]
     equal = [(i * n // want, (i + 1) * n // want) for i in range(want)]
+    sizes = np.array([b[1] - b[0] for b in blocks], float)
+    # a regular set of gutters is trusted even when the generator drew a
+    # different grid than asked (3 columns instead of 4)
+    if len(blocks) >= 2 and sizes.std() / sizes.mean() < 0.2:
+        return blocks
     if len(blocks) < want:
         return equal
-    sizes = np.array([b[1] - b[0] for b in blocks], float)
-    if sizes.std() / sizes.mean() < 0.2:
-        return blocks
     # irregular: a gap inside a panel; keep the gutters nearest the expected grid
     if not runs:
         return equal
@@ -129,6 +141,8 @@ def main():
     cells = []
     for y0, y1, x0, x1 in panels(a, cols, rows):
         cell = a[y0:y1, x0:x1]
+        if cell.shape[0] < 60 or cell.shape[1] < 60 or ((215 - cell[..., 0]) / 170 > 0.3).sum() < 500:
+            continue  # an empty or sliver panel
         R, B = cell[..., 0], cell[..., 2]
         ink = np.clip((215 - R) / 170, 0, 1)
         ink[ink < 0.08] = 0
@@ -140,7 +154,10 @@ def main():
         m = 6
         for layer in (ink, wash):
             layer[:m], layer[-m:], layer[:, :m], layer[:, -m:] = 0, 0, 0, 0
-        cells.append([erase_borders(ink), wash])
+        ink = erase_borders(ink)
+        if (ink > 0.3).sum() < 500:
+            continue  # only a panel border was there
+        cells.append([ink, wash])
     # every frame on one canvas size, the largest panel
     ch, cw = max(c[0].shape[0] for c in cells), max(c[0].shape[1] for c in cells)
     for c in cells:
@@ -160,6 +177,28 @@ def main():
             dy, dx = sy * 4, sx * 4
             cells[i] = [move(ink, dy, dx), move(wash, dy, dx)]
         print(f"frame {i + 1}: shifted {dx},{dy}")
+
+    # motion check: the change from one frame to the next should be steady.
+    # A step far below the median is a pause (two frames alike), far above it
+    # is a jump. Both read as choppy.
+    steps = []
+    n = len(cells)
+    for i in range(1, n + (1 if "--cycle" in sys.argv else 0)):
+        a1, a0 = small(cells[i % n][0]), small(cells[i - 1][0])
+        steps.append(float(np.abs(a1 - a0).mean()))
+    med = float(np.median(steps))
+    bad = [f"{i + 1}->{(i + 1) % n + 1}" for i, v in enumerate(steps) if v < 0.35 * med or v > 2.6 * med]
+    print("steps: " + " ".join(f"{v / med:.2f}" for v in steps))
+    print("motion: " + ("steady" if not bad else "UNEVEN at " + ", ".join(bad)))
+    # fill check: the style is line only; a body filled black covers far more
+    # of its box than an outline does
+    fills = []
+    for ink, _ in cells:
+        ys, xs = np.nonzero(ink > 0.3)
+        box = (ys.max() - ys.min() + 1) * (xs.max() - xs.min() + 1)
+        fills.append(float((ink > 0.5).sum()) / box)
+    print(f"fill: {max(fills):.2f}" + (" FILLED" if max(fills) > 0.16 else " line"))
+    print(f"count: {len(cells)}")
 
     # one common crop around everything drawn, kept square and centred
     union = np.zeros((ch, cw), bool)

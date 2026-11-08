@@ -153,7 +153,7 @@
     const [W, H] = scene.size;
     const fps = scene.fps || 10;
     const step = 1000 / fps;
-    if (fps !== 10) problems.push(`frame rate is ${fps}, the style asks for 10`);
+    if (fps !== 10 && fps !== 12) problems.push(`frame rate is ${fps}, the style asks for 10, or 12 for a flipbook`);
     const seen = new Set();
     for (const layer of scene.layers) {
       if (!layer.bbox) problems.push(`${layer.id}: no bbox, the frame check cannot run`);
