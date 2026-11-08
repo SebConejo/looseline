@@ -1,4 +1,4 @@
-# Ink
+# Looseline
 
 A Claude Code skill that makes hand-drawn illustrations and icons in a loose brush-line style, and animates them like a hand-drawn cartoon.
 
@@ -16,11 +16,11 @@ The older marker style (felt-tip on paper, coral watercolor) stays available wit
 ## Install
 
 ```sh
-git clone git@github.com:SebConejo/ink.git ~/codebase/ink
-ln -s ~/codebase/ink ~/.claude/skills/ink
+git clone git@github.com:SebConejo/looseline.git ~/codebase/looseline
+ln -s ~/codebase/looseline ~/.claude/skills/looseline
 ```
 
-Then in Claude Code: `/ink an icon of a person opening a door`.
+Then in Claude Code: `/looseline an icon of a person opening a door`.
 
 ## Requirements
 

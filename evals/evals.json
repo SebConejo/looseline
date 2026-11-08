@@ -1,5 +1,5 @@
 {
-  "skill_name": "ink",
+  "skill_name": "looseline",
   "evals": [
     {
       "id": 1,
@@ -13,7 +13,7 @@
     },
     {
       "id": 3,
-      "prompt": "I want a little animation of someone celebrating, in the Anthropic hand-drawn style.",
+      "prompt": "I want a little animation of someone celebrating, in a hand-drawn style.",
       "expected_output": "A pose sheet of one adult character with at least 4 poses (rest, anticipation or arm rising, jump or arms up, return), squash before the jump and on landing, an added element (heart, star or confetti) popping in with a back ease, the full state held at least 1.2 s, 10 fps, boil on, seamless loop, check passes, contact sheet read."
     }
   ]

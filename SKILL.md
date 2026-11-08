@@ -1,6 +1,6 @@
 ---
-name: ink
-description: Make hand-drawn editorial illustrations and icons in a loose brush-line style (few thick black lines, playful disproportion, giant hands, tiny heads, flat off-white paper cutouts on a terracotta background), each delivered in two versions, a still image and a looping animation of three key drawings played 1, 2, 3, 2. Use whenever someone wants an illustration, an icon, a spot illustration for a website, a hand-drawn, sketchy or doodle-style drawing, an explainer drawing, or an animated drawing, even if they never say "ink". Produces still.png and a standalone HTML page per drawing.
+name: looseline
+description: Make hand-drawn editorial illustrations and icons in a loose brush-line style (few thick black lines, playful disproportion, giant hands, tiny heads, flat off-white paper cutouts on a terracotta background), each delivered in two versions, a still image and a looping animation of three key drawings played 1, 2, 3, 2. Use whenever someone wants an illustration, an icon, a spot illustration for a website, a hand-drawn, sketchy or doodle-style drawing, an explainer drawing, or an animated drawing, even if they never say "looseline". Produces still.png and a standalone HTML page per drawing.
 license: MIT
 compatibility: Needs the Composio CLI signed in with a Gemini connection (image generation), Node.js 20+, Python 3 with Pillow and numpy, and Chrome or Chromium for the checks.
 ---
