@@ -30,9 +30,14 @@ if (!subject || !out) {
 const kind = opt("--kind", "single");
 const count = opt("--poses", "4");
 const grid = opt("--grid", "2x2");
+const [gc, gr] = grid.split("x").map(Number);
+const layout = gr === 1 ? `one row of ${gc} equal panels side by side` : `a ${grid} grid of equal panels (left to right, top to bottom)`;
 const heads = {
   poses: `Animation pose sheet: the SAME character drawn ${count} times in a row, evenly spaced, same size, same baseline, no overlap between poses. `,
-  frames: `Animation frame sheet: the SAME drawing in a ${grid} grid of equal panels (left to right, top to bottom), wide margins, no borders or numbers. Identical framing in every panel. The action advances evenly: each panel one small step further than the previous, no two panels alike, no pauses, no jumps. `,
+  frames:
+    gr === 1
+      ? `Animation key drawings: the SAME drawing in ${layout}, wide margins, no borders or numbers. Identical framing; only the moving part changes. `
+      : `Animation frame sheet: the SAME drawing in ${layout}, wide margins, no borders or numbers. Identical framing in every panel. The action advances evenly: each panel one small step further than the previous, no two panels alike, no pauses, no jumps. `,
   single: "Subject centred, about 55% of the canvas. ",
 };
 const head = heads[kind] || heads.single;

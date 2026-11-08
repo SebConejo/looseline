@@ -1,0 +1,53 @@
+{
+  "title": "A person in profile sits on a simple sofa, a laptop on the knees, typing. Nothin",
+  "size": [
+    760,
+    760
+  ],
+  "fps": 12,
+  "loop": 1000,
+  "still": 0,
+  "boil": {
+    "freq": 0.02,
+    "scale": 3
+  },
+  "layers": [
+    {
+      "id": "frames",
+      "kind": "ink",
+      "poses": [
+        "frame1.png",
+        "frame2.png",
+        "frame3.png"
+      ],
+      "boil": true,
+      "origin": [
+        380,
+        380
+      ],
+      "pose": [
+        [
+          0,
+          1
+        ],
+        [
+          250,
+          2
+        ],
+        [
+          500,
+          3
+        ],
+        [
+          750,
+          2
+        ],
+        [
+          1000,
+          1
+        ]
+      ],
+      "track": {}
+    }
+  ]
+}

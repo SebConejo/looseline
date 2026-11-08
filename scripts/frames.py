@@ -56,11 +56,13 @@ def erase_borders(ink):
         # a box or corner of a panel border: touches the cell edge and its ink
         # lies along the rim of its own bounding box
         touches = ys.start < 10 or xs.start < 10 or ys.stop > h - 10 or xs.stop > w - 10
-        if touches and bh > 0.3 * h and bw > 0.3 * w:
+        if bh > 0.3 * h and bw > 0.3 * w:
             comp = lab[sl] == i
             yy, xx = np.nonzero(comp)
             rim = (yy < 30) | (yy > bh - 30) | (xx < 30) | (xx > bw - 30)
-            if rim.mean() > 0.8:
+            # a box standing apart from the drawing is all rim; near the
+            # edge, a corner piece is mostly rim
+            if rim.mean() > (0.8 if touches else 0.93):
                 ink[lab == i] = 0
     return ink
 
@@ -99,7 +101,10 @@ def bands(profile, want, min_gap):
 def panels(a, cols, rows):
     """Panels in reading order, found from the empty gutters between them, so a
     sheet with more or fewer panels than asked is still cut right."""
-    on = np.clip((215 - a[..., 0]) / 170, 0, 1) > 0.3
+    R, B = a[..., 0], a[..., 2]
+    paper = np.median(R - B)
+    # ink or watercolor both belong to a panel: gutters are empty of both
+    on = (np.clip((215 - R) / 170, 0, 1) > 0.3) | (R - B - paper > 40)
     out = []
     for y0, y1 in bands(on.sum(1), rows, 12):
         for x0, x1 in bands(on[y0:y1].sum(0), cols, 12):
@@ -145,7 +150,7 @@ def main():
             continue  # an empty or sliver panel
         R, B = cell[..., 0], cell[..., 2]
         ink = np.clip((215 - R) / 170, 0, 1)
-        ink[ink < 0.08] = 0
+        ink[ink < 0.15] = 0
         # the paper is not always neutral: measure its tint and paint above it
         paper = np.median(R - B)
         wash = np.clip((R - B - paper - 14) / 110, 0, 1) * (ink < 0.3)
@@ -190,14 +195,32 @@ def main():
     bad = [f"{i + 1}->{(i + 1) % n + 1}" for i, v in enumerate(steps) if v < 0.35 * med or v > 2.6 * med]
     print("steps: " + " ".join(f"{v / med:.2f}" for v in steps))
     print("motion: " + ("steady" if not bad else "UNEVEN at " + ", ".join(bad)))
-    # fill check: the style is line only; a body filled black covers far more
-    # of its box than an outline does
+    # fill check: the style is line only. Thinning the ink by more than half a
+    # marker width erases every stroke; what survives is a solid black area.
+    from scipy import ndimage
     fills = []
     for ink, _ in cells:
         ys, xs = np.nonzero(ink > 0.3)
         box = (ys.max() - ys.min() + 1) * (xs.max() - xs.min() + 1)
-        fills.append(float((ink > 0.5).sum()) / box)
-    print(f"fill: {max(fills):.2f}" + (" FILLED" if max(fills) > 0.16 else " line"))
+        core = ndimage.binary_erosion(ink > 0.5, iterations=max(6, int(ink.shape[1] * 0.012)))
+        fills.append(float(core.sum()) / box)
+    print(f"fill: {max(fills):.3f}" + (" FILLED" if max(fills) > 0.02 else " line"))
+    # border check: a panel frame is a long straight line along the top or
+    # bottom of the drawing AND one along a side
+    boxed = 0
+    for ink, _ in cells:
+        on = ink > 0.3
+        ys, xs = np.nonzero(on)
+        y0, y1, x0, x1 = ys.min(), ys.max(), xs.min(), xs.max()
+        bw, bh = x1 - x0 + 1, y1 - y0 + 1
+        band = 18
+        top = on[y0:y0 + band, x0:x1 + 1].any(0).mean()
+        bottom = on[y1 - band:y1 + 1, x0:x1 + 1].any(0).mean()
+        left = on[y0:y1 + 1, x0:x0 + band].any(1).mean()
+        right = on[y0:y1 + 1, x1 - band:x1 + 1].any(1).mean()
+        if max(top, bottom) > 0.75 and max(left, right) > 0.75:
+            boxed += 1
+    print(f"border: {boxed} framed" + (" BOXED" if boxed else ""))
     print(f"count: {len(cells)}")
 
     # one common crop around everything drawn, kept square and centred

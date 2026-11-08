@@ -15,9 +15,18 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
 
 ## Workflow
 
-1. **One idea, one small story.** The default animation is a flipbook: 4 to 6 frames of the same scene that take it from one situation to another (the thermometer rises, he drinks his coffee, the page turns). See `library/flip/`.
-    Write in one sentence what the drawing says, then the story in beats with times: rest, action, reveal, hold, return. Real motion is required: something changes pose, moves or gets added. A drawing that only traces itself or fades in is not an animation.
-2. **Decide the moving parts** (`references/motion.md`, section 2):
+0. **Default: two versions of every drawing, the normal one and the animated one.** Unless the person asks for something else, describe the scene and three situations of the same action, then run:
+
+   ```
+   node scripts/make.mjs --subject "A person in profile sits at a desk with a laptop and a paper coffee cup." \
+     --states "hand resting on the cup | the cup lifted halfway | the cup at the mouth, sipping" --out work/coffee
+   ```
+
+   It generates the three key drawings on one sheet, cuts and aligns them, rejects a sheet with a black fill or a frame around the drawing (up to 3 tries), and writes `still.png` (the normal version: drawing 1) and `anim.html` (the animated version). The animation plays the drawings **1, 2, 3, 2** and loops, 250 ms each: the motion goes and comes back, so the loop never jumps. Situation 1 is the rest state, 2 is exactly halfway, 3 is the full action. Read the three frames before delivering. `library/anim/` holds 19 examples (`index.html` shows both versions side by side, `jobs.json` the subjects and situations, `all.mjs` regenerates them).
+
+   The steps below are for anything more: watercolor staging, longer stories, pose sheets.
+
+1. **One idea, one small story.**2. **Decide the moving parts** (`references/motion.md`, section 2):
    - a character that changes pose needs **one pose sheet** with every pose;
    - ink and watercolor that move apart come from one drawing split into two layers;
    - an added element (a heart, a blob) is a layer reused from another drawing or generated alone.
@@ -36,8 +45,6 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
 ## Library
 
 `library/catalog.json` lists the subjects; `node scripts/library.mjs --only 1-10` generates and splits them into `library/NN-slug/`. Each accepted folder holds `source.jpg`, `layer-ink.png`, the watercolor layer, `version-ink.jpg`, `version-color.jpg` and `judge.json`. `--retry N --note "judge reasons"` regenerates a refused one. Reuse a library drawing before generating a new one.
-
-Flipbooks live in `library/flip/NAME/`: `sheet.jpg`, `frameN.png`, `scene.json`. `library/flip/jobs.json` lists each subject, grid and timing; `node library/flip/make.mjs [name,...]` generates missing sheets and `sh library/flip/cut.sh NAME` cuts, aligns and builds `anim.html`. `library/flip/index.html` shows them all.
 
 ## Examples
 

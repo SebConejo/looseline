@@ -4,7 +4,9 @@ How a drawing becomes an animation, and the scene file that describes it.
 
 ## 1. What a good animation is
 
-**An animation takes the scene from one situation to another.** The thermometer rises, the person lifts the cup and drinks, the page turns, the laces tie, the snow falls. The owner rejected the light automatic animation (the drawing arrives, breathes, a wash spreads) as lazy.
+**The default animation is three key drawings played 1, 2, 3, 2 in a loop** (`scripts/make.mjs`). Each drawing is a different situation of one action: the hand on the cup, the cup halfway, the cup at the mouth; the door closed, half open, open. Going back through 2 makes the loop go and come back without a jump. Each drawing shows 250 ms.
+
+What the owner rejected on the way there: an automatic animation where the drawing only arrives and breathes ("lazy"); 4 frames played once and jumping back to the start ("looks broken"); 9 to 12 generated frames with holds (pauses, then a jump) and with the uneven, inconsistent in-betweens the generator makes. Computed in-betweens (`scripts/tween.py`, optical flow) only work for small motions and double the line on large ones.
 
 **Things move, change and get added.** An arm rises, a hand waves, a character jumps, a heart grows out of a palm, a watercolor spreads. A drawing that only traces itself or fades in is not an animation (rejected twice).
 
