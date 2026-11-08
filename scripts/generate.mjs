@@ -4,6 +4,9 @@ import { resolve } from "node:path";
 
 const STYLE =
   "Loose hand-drawn editorial sketch with one thick black felt-tip marker line (#1B1B1A): thick-thin, blunt ends, slightly wobbly and imperfect, few lines, no fine detail. Draw only what is described: no extra people, heads or objects. People are bald adult silhouettes in profile or three-quarter view, nose in the contour, a closed-eye curve, bodies suggested without any clothing detail (no collars, ties, buttons, pockets, hair); never a round smiley head. Objects simplified and imperfect, never precise or technical. Plain off-white background (#FAF9F6), lots of empty space. No words or letters, no icons, no shading, no gradient, no frame.";
+// Frame sheets need room for one line per panel, so they use a shorter style.
+const STYLE_SHORT =
+  "Loose hand-drawn editorial sketch, one thick black felt-tip marker line (#1B1B1A), thick-thin, blunt ends, slightly wobbly, few lines, no fine detail. Draw only what is described. People: bald adult silhouettes in profile, nose in the contour, closed-eye curve, no clothing detail, never a round smiley head. Objects loose and imperfect. Off-white background (#FAF9F6). No words, icons, shading or frame.";
 const WASH = " Coral watercolor (#F5A39B) only where asked: loose, translucent, paper grain.";
 const NO_WASH = " No color at all, black ink only.";
 
@@ -15,21 +18,25 @@ const opt = (name, fallback) => {
 const subject = opt("--subject");
 const out = opt("--out");
 if (!subject || !out) {
-  console.error(`usage: node scripts/generate.mjs --subject "..." --out drawing.jpg [--kind single|poses] [--poses 4] [--wash] [--aspect 1:1|16:9] [--model gemini-3-pro-image-preview]
+  console.error(`usage: node scripts/generate.mjs --subject "..." --out drawing.jpg [--kind single|poses|frames] [--grid 2x2] [--size 1K|2K] [--poses 4] [--wash] [--aspect 1:1|16:9] [--model gemini-3-pro-image-preview]
 
 --kind single   one drawing, subject centred, about 55% of the canvas
 --kind poses    one pose sheet: the SAME character drawn --poses times in a row on one baseline; describe each pose in --subject
+--kind frames   one frame sheet: the SAME drawing in a --grid 2x2 of panels, only the moving part changes; describe each panel in --subject (2K by default)
 --dry           print the prompt and its length, generate nothing
 --wash          allow coral watercolor where the subject asks for it (otherwise black ink only)`);
   process.exit(2);
 }
 const kind = opt("--kind", "single");
 const count = opt("--poses", "4");
-const head =
-  kind === "poses"
-    ? `Animation pose sheet: the SAME character drawn ${count} times in a row, evenly spaced, same size, same baseline, no overlap between poses. `
-    : "Subject centred, about 55% of the canvas. ";
-const prompt = head + subject + " " + STYLE + (args.includes("--wash") ? WASH : NO_WASH);
+const grid = opt("--grid", "2x2");
+const heads = {
+  poses: `Animation pose sheet: the SAME character drawn ${count} times in a row, evenly spaced, same size, same baseline, no overlap between poses. `,
+  frames: `Animation frame sheet: the SAME drawing in a ${grid} grid of equal panels (left to right, top to bottom), wide margins, no borders or numbers. Identical framing, size and position in every panel; only the moving part changes. `,
+  single: "Subject centred, about 55% of the canvas. ",
+};
+const head = heads[kind] || heads.single;
+const prompt = head + subject + " " + (kind === "frames" ? STYLE_SHORT : STYLE) + (args.includes("--wash") ? WASH : NO_WASH);
 if (prompt.length > 1000) {
   console.error(`prompt is ${prompt.length} characters; the managed Gemini connection takes 1000 at most. Shorten --subject by ${prompt.length - 1000}.`);
   process.exit(2);
@@ -42,6 +49,7 @@ const body = {
   model: opt("--model", "gemini-3-pro-image-preview"),
   prompt,
   aspect_ratio: opt("--aspect", kind === "poses" ? "16:9" : "1:1"),
+  image_size: opt("--size", kind === "frames" ? "2K" : "1K"),
 };
 const run = spawnSync("composio", ["execute", "GEMINI_GENERATE_IMAGE", "-d", JSON.stringify(body)], { encoding: "utf8", timeout: 480000, maxBuffer: 1 << 26 });
 const text = run.stdout || "";

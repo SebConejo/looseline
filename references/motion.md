@@ -4,6 +4,8 @@ How a drawing becomes an animation, and the scene file that describes it.
 
 ## 1. What a good animation is
 
+**An animation takes the scene from one situation to another.** The thermometer rises, the person lifts the cup and drinks, the page turns, the laces tie, the snow falls. The owner rejected the light automatic animation (the drawing arrives, breathes, a wash spreads) as lazy.
+
 **Things move, change and get added.** An arm rises, a hand waves, a character jumps, a heart grows out of a palm, a watercolor spreads. A drawing that only traces itself or fades in is not an animation (rejected twice).
 
 - **A small story** of 4 to 7 seconds, then a loop: rest, action, reveal, hold, return to rest.
@@ -25,7 +27,10 @@ The generator draws everything. Moving parts must be separate images:
 |---|---|
 | ink and watercolor that move apart (a heart that leaves a hand) | one drawing, then `scripts/layers.py` splits the ink and the coral wash into two layers |
 | a character that changes pose | one pose sheet (`generate.mjs --kind poses`), then `scripts/poses.py` cuts and aligns the poses on the feet |
+| the default: the whole scene changes over 4 to 6 frames | one frame sheet (`generate.mjs --kind frames --grid 2x2`, or `3x2 --aspect 3:2` for a run or typing cycle), then `scripts/frames.py` cuts the panels, erases any panel border and aligns each frame on frame 1; `scripts/flipbook.mjs DIR --seq "1:700,2:300,3:300,4:1600"` writes the scene |
 | an extra element (a heart, a star, a watercolor blob) | reuse a layer from another drawing, or generate it alone on an empty background |
+
+Frame sheets: describe each panel in one short clause ("Panel 1: low level. Panel 2: a third."), say what stays fixed, and say "line only, never filled" for hands and bodies, or the generator fills them black. Choose timings that tell the story: short in-between frames (150 to 300 ms), long holds on the start and end states (900 to 1800 ms). A cycle (running, typing, falling snow) plays every frame at 100 to 250 ms. Read the contact sheet: a frame that changes framing, loses an object, adds a person or keeps a panel border is generated again.
 
 Gemini through Composio cannot edit an existing image. The same character in several poses must therefore come from **one** pose sheet: separate generations give different characters.
 

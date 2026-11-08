@@ -1,0 +1,62 @@
+{
+  "title": "sofa-typing",
+  "size": [
+    760,
+    760
+  ],
+  "fps": 10,
+  "loop": 1450,
+  "still": 0,
+  "boil": {
+    "freq": 0.02,
+    "scale": 3
+  },
+  "layers": [
+    {
+      "id": "frames",
+      "kind": "ink",
+      "poses": [
+        "frame1.png",
+        "frame2.png",
+        "frame3.png",
+        "frame4.png"
+      ],
+      "boil": true,
+      "origin": [
+        380,
+        380
+      ],
+      "pose": [
+        [
+          0,
+          1
+        ],
+        [
+          150,
+          2
+        ],
+        [
+          300,
+          3
+        ],
+        [
+          450,
+          1
+        ],
+        [
+          600,
+          2
+        ],
+        [
+          750,
+          4
+        ],
+        [
+          1450,
+          1
+        ]
+      ],
+      "track": {}
+    }
+  ]
+}

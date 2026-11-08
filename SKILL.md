@@ -15,7 +15,8 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
 
 ## Workflow
 
-1. **One idea, one small story.** Write in one sentence what the drawing says, then the story in beats with times: rest, action, reveal, hold, return. Real motion is required: something changes pose, moves or gets added. A drawing that only traces itself or fades in is not an animation.
+1. **One idea, one small story.** The default animation is a flipbook: 4 to 6 frames of the same scene that take it from one situation to another (the thermometer rises, he drinks his coffee, the page turns). See `library/flip/`.
+    Write in one sentence what the drawing says, then the story in beats with times: rest, action, reveal, hold, return. Real motion is required: something changes pose, moves or gets added. A drawing that only traces itself or fades in is not an animation.
 2. **Decide the moving parts** (`references/motion.md`, section 2):
    - a character that changes pose needs **one pose sheet** with every pose;
    - ink and watercolor that move apart come from one drawing split into two layers;
@@ -35,6 +36,8 @@ This skill makes drawings that look drawn by hand with a felt marker, then anima
 ## Library
 
 `library/catalog.json` lists the subjects; `node scripts/library.mjs --only 1-10` generates and splits them into `library/NN-slug/`. Each accepted folder holds `source.jpg`, `layer-ink.png`, the watercolor layer, `version-ink.jpg`, `version-color.jpg` and `judge.json`. `--retry N --note "judge reasons"` regenerates a refused one. Reuse a library drawing before generating a new one.
+
+Flipbooks live in `library/flip/NAME/`: `sheet.jpg`, `frameN.png`, `scene.json`. `library/flip/jobs.json` lists each subject, grid and timing; `node library/flip/make.mjs [name,...]` generates missing sheets and `sh library/flip/cut.sh NAME` cuts, aligns and builds `anim.html`. `library/flip/index.html` shows them all.
 
 ## Examples
 

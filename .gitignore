@@ -6,3 +6,5 @@ regions.png
 library/*/source-rejected-*.jpg
 library/*/regions.png
 library/*/anim.html
+library/flip/*/anim.html
+library/flip/*/sheet-rejected-*.jpg
