@@ -1,6 +1,6 @@
 ---
 name: ink
-description: Make hand-drawn editorial illustrations (thick black felt-tip line, simplified symbolic shapes, adult editorial characters, occasional coral watercolor) and animate them for real at 10 fps (characters change pose, wave and jump, elements pop in, beat and float, the ink boils). Use whenever someone wants a hand-drawn, sketchy, "Anthropic-style" or "Icons8 Ouch-style" illustration, a spot illustration for a website, a doodle-style explainer, or an animated hand-drawn drawing, even if they never say "ink". Produces a standalone HTML page per animation.
+description: Make hand-drawn editorial illustrations and icons (thick black felt-tip line, simplified symbolic shapes, bald adult characters in profile, occasional coral watercolor), each delivered in two versions, a still drawing and a looping animation of three key drawings played 1, 2, 3, 2. Use whenever someone wants an illustration, an icon, a spot illustration for a website, a hand-drawn, sketchy, "Anthropic-style" or "Icons8 Ouch-style" drawing, a doodle-style explainer, or an animated drawing, even if they never say "ink". Produces still.png and a standalone HTML page per drawing.
 license: MIT
 compatibility: Needs the Composio CLI signed in with a Gemini connection (image generation), Node.js 20+, Python 3 with Pillow and numpy, and Chrome or Chromium for the checks.
 ---
